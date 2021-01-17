@@ -24,9 +24,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'id',
         'name',
-        'email',
         'password',
+        'type',
     ];
 
     /**
@@ -58,4 +59,39 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function collects()
+    {
+        return $this->belongsToMany(Note::class,'collect_notes');
+    }
+
+    public function scores()
+    {
+        return $this->belongsToMany(Note::class,'note_scores');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

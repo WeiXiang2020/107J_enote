@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Response extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'content',
+        'time',
+    ];
+
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
 }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Transfer extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'path',
+    ];
+
+    public function textbook()
+    {
+        return $this->belongsTo(Textbook::class);
+    }
 }
