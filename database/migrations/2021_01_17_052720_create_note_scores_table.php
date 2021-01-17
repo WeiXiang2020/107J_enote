@@ -15,7 +15,7 @@ class CreateNoteScoresTable extends Migration
     {
         Schema::create('note_scores', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedbigInteger('user_id');
+            $table->string('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('note_id');
             $table->foreign('note_id')->references('id')->on('notes')->onDelete('cascade');
