@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//學生登入後頁面
+//Route::middleware(['auth:sanctum', 'verified'])
+//    ->get('/students/home',[StudentController::class,'home'])->name('students.home');
+Route::get('/students/home',[StudentController::class,'home'])->name('students.home');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -12,6 +14,16 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home(Request $request)
+    {
+
+
+//        if(User::find(Auth::id())->value('type')=='學生'){
+//            return view('hhome');
+//        }
+        return view('students.hhome');
+    }
+
     public function index()
     {
         //
