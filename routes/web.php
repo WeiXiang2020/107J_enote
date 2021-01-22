@@ -23,3 +23,5 @@ Route::get('/', function () {
 //Route::middleware(['auth:sanctum', 'verified'])
 //    ->get('/students/home',[StudentController::class,'home'])->name('students.home');
 Route::get('/students/home',[StudentController::class,'home'])->name('students.home');
+//課程頁面
+Route::get('/classes/1',[\App\Http\Controllers\CourseController::class,'index'])->name('classes.index');
