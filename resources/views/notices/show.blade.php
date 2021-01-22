@@ -9,7 +9,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">已選課程:</h6>
-                <a class="collapse-item" href="{{route('classes.index')}}">統計學</a>
+                <a class="collapse-item" href="/classes/1">統計學</a>
             </div>
         </div>
     </li>
@@ -48,7 +48,7 @@
                 <h6 class="collapse-header">上課教材:</h6>
 
 
-{{--                1--}}
+                {{--                1--}}
                 <a class="nav-link collapsed mh5" href="#ch1" data-toggle="collapse" style="color:black;"><span>Ch1</span></a>
                 <div id="ch1" class="collapse">
                     <hr class="sidebar-divider bg-dark">
@@ -56,7 +56,7 @@
                     <a class="collapse-item" href="#">Ch1-課程筆記</a>
                 </div>
 
-{{--                2--}}
+                {{--                2--}}
                 <a class="nav-link collapsed mh5" href="#ch2" data-toggle="collapse" style="color:black;"><span>Ch2</span></a>
                 <div id="ch2" class="collapse">
                     <hr class="sidebar-divider bg-dark">
@@ -83,46 +83,46 @@
     </li>
 @endsection
 
+<style>
+    label {
+        background-color: burlywood;
+        color: black;
+        font-weight: bold;
+        padding: 4px;
+        text-transform: uppercase;
+        font-family:  "Trebuchet MS","Microsoft JhengHei UI", Helvetica, sans-serif;
+    }</style>
+
 @section('notice')
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h2 class="mt-4">統計學</h2>
+                <h2 class="mt-4">統計學
+                    <a class="btn btn-outline-dark btn-sm" style="margin-left:715px; width:200px; height:30px;"
+                       href="{{route('classes.index')}}" >返回公告列表</a>
+                </h2>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>
-                        公告
+                        發佈者：
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>標題</th>
-                                    <th>發佈者</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-{{--                                @foreach ($carts as $cart)--}}
-                                        {{ csrf_field() }}
+                    <div class="form-group width">
+                        <h5 class="card-title">
+                            <label for="title">標題：</label>
+                                hi have fun!!!!!!!!!</h5>
 
-                                    <tr>
-                                    <td >Tiger Nixon</td>
-                                    <td width="180">System Architect</td>
-                                    <td width="100" align="center">
-                                        <form action="/notices/1" method="POST">
-                                            {{ csrf_field() }}
-                                            <a class="btn btn-outline-dark btn-sm" href="{{route('notices.show')}}" >檢視公告</a>
-                                        </form>
-                                    </td>
-                                    </tr>
-{{--                                @endforeach        --}}
-                                </tbody>
-                            </table>
-                        </div>
+                    </div><hr class="sidebar-divider">
+                    <div class="form-group width">
+                        <h5 class="card-title">
+                            <label for="seller_id">內容：</label>
+                            contentSFHGSDFHHHHHHHHHHHHHHHHHHHHHHHHHHVDSFBSSGASKGKDNVKSNFVNDS.VJDSNFV.SNDVKJDNV
+                        </h5>
                     </div>
+                    </div>
+
                 </div>
+{{--                <a class="btn btn-outline-dark btn-sm" style="width:200px;height:30px;" href="{{route('classes.index')}}" >返回公告列表</a>--}}
             </div>
         </main>
     </div>

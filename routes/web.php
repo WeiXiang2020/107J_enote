@@ -25,3 +25,6 @@ Route::get('/', function () {
 Route::get('/students/home',[StudentController::class,'home'])->name('students.home');
 //課程頁面
 Route::get('/classes/1',[\App\Http\Controllers\CourseController::class,'index'])->name('classes.index');
+//顯示公告資訊
+Route::get('/notices/1',[\App\Http\Controllers\NoticeController::class,'show'])->name('notices.show');
+
