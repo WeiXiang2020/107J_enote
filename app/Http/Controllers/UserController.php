@@ -16,7 +16,7 @@ class UserController extends Controller
     public function home()
     {
         if(Auth::check()){
-            return view('students.hhome');
+            return route('students.home');
         }
 
         return view('auth/login');

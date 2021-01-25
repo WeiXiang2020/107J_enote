@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,8 +17,13 @@ class StudentController extends Controller
      */
     public function home(Request $request)
     {
+        $type= User::where('id', Auth::id())->value('type');
+//        $course= auth()->user()->student()->coursestudent()->;
+        if ($type=='學生'){
+            return view('students.hhome');
 
-        return view('students.hhome');
+        }
+
     }
 
     public function index()
