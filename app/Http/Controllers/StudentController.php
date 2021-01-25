@@ -17,10 +17,6 @@ class StudentController extends Controller
     public function home(Request $request)
     {
 
-
-//        if(User::find(Auth::id())->value('type')=='學生'){
-//            return view('hhome');
-//        }
         return view('students.hhome');
     }
 

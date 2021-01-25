@@ -303,7 +303,7 @@
             <div class="modal-body">若確定要登出，請按登出鈕</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                <a class="btn btn-danger" href="#">登出</a>
+                <a class="btn btn-danger" href="{{route('logout')}}">登出</a>
             </div>
         </div>
     </div>

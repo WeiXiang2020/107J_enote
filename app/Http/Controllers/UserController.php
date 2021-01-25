@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notice;
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class NoticeController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        //
+        if(Auth::check()){
+            return view('students.hhome');
+        }
+
+        return view('auth/login');
     }
 
     /**
@@ -22,9 +27,12 @@ class NoticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function logout()
     {
-        //
+        if (Auth::check()) {
+            Auth::logout();
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -41,21 +49,21 @@ class NoticeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Notice  $notice
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Notice $notice)
+    public function show(Admin $admin)
     {
-        return view('notices.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Notice  $notice
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notice $notice)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -64,10 +72,10 @@ class NoticeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Notice  $notice
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Notice $notice)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -75,10 +83,10 @@ class NoticeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Notice  $notice
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notice $notice)
+    public function destroy(Admin $admin)
     {
         //
     }
