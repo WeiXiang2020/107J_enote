@@ -1,4 +1,4 @@
-@extends('layouts/hhome')
+@extends('layouts/home')
 @section('navv')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"

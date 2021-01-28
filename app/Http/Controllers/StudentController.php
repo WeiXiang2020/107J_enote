@@ -20,7 +20,7 @@ class StudentController extends Controller
         $type= User::where('id', Auth::id())->value('type');
 //        $course= auth()->user()->student()->coursestudent()->;
         if ($type=='學生'){
-            return view('students.hhome');
+            return view('students.home');
 
         }
 

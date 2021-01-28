@@ -79,7 +79,52 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        @yield('navv')
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-book"></i>
+                <span>課程</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">已選課程:</h6>
+                    <a class="collapse-item" href="{{route('classes.index')}}">統計學</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-folder-open"></i>
+                <span>筆記專區</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">筆記相關資訊:</h6>
+                    <a class="collapse-item" href="#">新增筆記</a>
+                    <a class="collapse-item" href="{{route('mynotes')}}">我的筆記</a>
+                    <a class="collapse-item" href="#">搜尋筆記</a>
+                    <a class="collapse-item" href="#">收藏筆記</a>
+                </div>
+            </div>
+        </li>
+        @yield('nav')
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Message
+        </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-comment"></i>
+                <span>與Ta聯繫</span></a>
+        </li>
     </ul>
     <!-- End of Sidebar -->
 
@@ -100,45 +145,85 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                @yield('search')
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <style>
+                    * {box-sizing: border-box;}
+                    body {
+                        margin: 0;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
 
+                    .topnav {
+                        overflow: hidden;
+                        background-color: #e9e9e9;
+                    }
+
+                    .topnav a {
+                        float: left;
+                        display: block;
+                        color: black;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                        font-size: 17px;
+                    }
+
+                    .topnav a:hover {
+                        background-color: #ddd;
+                        color: black;
+                    }
+
+                    .topnav a.active {
+                        background-color: #2196F3;
+                        color: white;
+                    }
+
+                    .topnav .search-container {
+                        float: right;
+                    }
+
+                    .topnav input[type=text] {
+                        padding: 6px;
+                        margin-top: 8px;
+                        font-size: 17px;
+                        border: none;
+                    }
+
+                    .topnav .search-container button {
+                        float: right;
+                        padding: 6px 10px;
+                        margin-top: 8px;
+                        margin-right: 16px;
+                        background: #ddd;
+                        font-size: 17px;
+                        border: none;
+                        cursor: pointer;
+                    }
+
+                    .topnav .search-container button:hover {
+                        background: #ccc;
+                    }
+
+                    @media screen and (max-width: 600px) {
+                        .topnav .search-container {
+                            float: none;
+                        }
+                        .topnav a, .topnav input[type=text], .topnav .search-container button {
+                            float: none;
+                            display: block;
+                            text-align: left;
+                            width: 100%;
+                            margin: 0;
+                            padding: 14px;
+                        }
+                        .topnav input[type=text] {
+                            border: 1px solid #ccc;
+                        }
+                    }
+                </style>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
-
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                             aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                           placeholder="Search for..." aria-label="Search"
-                                           aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
 
                     <!-- 通知 -->
                     <li class="nav-item dropdown no-arrow mx-1">
@@ -271,7 +356,7 @@
 
             </nav>
             <!-- End of Topbar -->
-
+            @yield('content')
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 @yield('notice')
