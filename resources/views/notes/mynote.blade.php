@@ -39,11 +39,11 @@
                                             @endif
                                         </td>
                                         <td width="170" align="center">
-                                        <a class="btn btn-primary btn-sm" href="/mynotes/{id}">檢視筆記</a>
-                                        <form action="#" method="POST">
+                                        <a class="btn btn-primary btn-sm" href="/mynotes/{{$note->id}}">檢視筆記</a>
+                                        <form action="/mynotes/{{$note->id}}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <input name="delete" type="submit" onclick="javascript: form.action='/mynotes/{id}';" value="刪除筆記"  class="btn btn-danger btn-sm" >
+                                            <input name="delete" type="submit" onclick="javascript: form.action='/mynotes/{{$note->id}}';" value="刪除筆記"  class="btn btn-danger btn-sm" >
                                         </form>
                                     </td>
                                     </tr>
