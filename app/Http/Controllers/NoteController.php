@@ -84,6 +84,12 @@ class NoteController extends Controller
         //
     }
 
+    public function search(Request $request)
+    {
+        $searchs= $request->input('searchs');
+        return view('notes.search',['searchs'=>$searchs]);
+    }
+
     public function mynote(Request $request)
     {
         $notes=Note::where('user_id',Auth::id())->get();
