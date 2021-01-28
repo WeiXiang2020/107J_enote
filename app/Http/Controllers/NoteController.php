@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -81,5 +82,11 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
         //
+    }
+
+    public function mynote(Request $request)
+    {
+        $notes=Note::where('user_id',Auth::id())->get();
+        return view('notes.mynote',['notes'=>$notes]);
     }
 }
