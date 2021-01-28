@@ -29,7 +29,10 @@ Route::get('/classes/1',[CourseController::class,'index'])->name('classes.index'
 Route::get('/notices/1',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
 //顯示所有筆記
 Route::get('/mynotes',[NoteController::class,'mynote'])->name('mynotes')->middleware('auth');
-
+//新增空白筆記
+Route::get('notes/create',[NoteController::class,'create'])->name('notes.create');
+Route::post('/notes',[NoteController::class,'store'])->name('notes.store');
+Route::post('image',[NoteController::class,'image'])->name('notes.image')->where('id', '[0-9]+');
 
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 

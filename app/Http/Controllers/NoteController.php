@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class NoteController extends Controller
 {
@@ -25,7 +26,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
@@ -36,7 +37,39 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+//            'class' => 'required',
+            'notename' => 'required',
+            'json' => 'required',
+
+        ]);
+        $json = $request->json;
+        Storage::disk('public')->put('\\json\\' . $request->class . '\\' . $request->notename . '.json', $json);
+        $path = $request->notename . '.json';
+        Note::create([
+            'user_id'=>$request->user()->id,
+            'title'=>$request->notename,
+            'content'=>"XXXXXXX",
+            'time'=>now(),
+            'path'=>"??",
+            'share'=>0,
+            'like'=>0,
+            'textfile'=>$path
+        ]);
+    }
+
+    public function image(Request $request)
+    {
+        $this->validate($request, [
+            'img' => 'required',
+        ]);
+
+        if($request->file('img')) {
+            $filename = $request->file('img')->getClientOriginalName();
+
+            $request->img->move(public_path() . '\images\\', $filename);
+        }
+
     }
 
     /**

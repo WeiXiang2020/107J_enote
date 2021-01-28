@@ -25,7 +25,7 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">筆記相關資訊:</h6>
-                        <a class="collapse-item" href="#">新增筆記</a>
+                        <a class="collapse-item" href="/notes/create">新增筆記</a>
                         <a class="collapse-item" href="{{route('mynotes')}}">我的筆記</a>
                         <a class="collapse-item" href="#">搜尋筆記</a>
                         <a class="collapse-item" href="#">收藏筆記</a>
