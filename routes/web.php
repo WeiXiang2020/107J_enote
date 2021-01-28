@@ -32,6 +32,10 @@ Route::get('/mynotes',[NoteController::class,'mynote'])->name('mynotes')->middle
 //搜尋筆記
 Route::get('/notes/search',[NoteController::class,'search'])->name('notes.search')->middleware('auth');
 
+//新增空白筆記
+Route::get('notes/create',[NoteController::class,'create'])->name('notes.create');
+Route::post('/notes',[NoteController::class,'store'])->name('notes.store');
+Route::post('image',[NoteController::class,'image'])->name('notes.image')->where('id', '[0-9]+');
 
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
