@@ -13,7 +13,54 @@
 
 @section('notice')
     <h4 class="mt-4">搜尋結果</h4>
+
     <div class="card-body">
-        {{$searchs}}
+        <div class="table-responsive">
+
+        @foreach ($searchs as $search)
+            <form method="POST" role="form" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <table class="table task-table table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0"
+                       style="background-color: #FFFDD0;color: #2d3748; border:2px #2d3748">
+                    <thead style="background-color: #bac8f3">
+                    <tr>
+                        <th>標題</th>
+                        <th class="mh1">引用教材</th>
+                        <style type="text/css">
+                            .mh1{
+                                text-align:center;/** 设置水平方向居中 */
+                                vertical-align:middle/** 设置垂直方向居中 */
+                            }
+                        </style>
+                        <th>作者</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td width="280">{{$search->title}}</td>
+                    <td width="500" align="center">
+                        @if($search->textbook==null)
+                            無引用教材
+                        @else
+                            {{$search->textbook->name}}
+                        @endif
+                    </td>
+                    <td width="500" align="center">
+                        {{$search->user->name}}
+                    </td>
+                    <td width="170" align="center">
+                        <a class="btn btn-primary btn-sm" href="/mynotes/{id}">檢視筆記</a>
+                    </td>
+                </tr>
+                    </tbody>
+                </table>
+            </form>
+
+        @endforeach
+        </div>
     </div>
 @endsection
+
+

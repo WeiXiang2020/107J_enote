@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseStudent;
 use App\Models\Note;
+use App\Models\Textbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -119,8 +121,22 @@ class NoteController extends Controller
 
     public function search(Request $request)
     {
-        $searchs= $request->input('searchs');
+        //撈出該學生所有修的課程
+        $courseId = CourseStudent::where('student_id',Auth::id())->get();
+        $courseId = $courseId->toArray();
+        $courseId = array_column($courseId,'course_id');
+
+        //撈出對應課程id的教材編號
+        $textBookId = Textbook::whereIn('course_id',$courseId)->get();
+        $textBookId = $textBookId->toArray();
+        $textBookId = array_column( $textBookId,'id');
+        $search= $request->input('searchs');
+        //撈出標題符合關鍵字的筆記，且教材編號等於使用的教材編號
+        $searchs=Note::where("title", "like", '%' . $search . '%')
+                    ->whereIn('textbook_id',$textBookId)
+                    ->get();
         return view('notes.search',['searchs'=>$searchs]);
+
     }
 
     public function mynote(Request $request)
