@@ -59,19 +59,19 @@
 
 <div class="tool" id="toolid">
     <a href="#about"><i class="fas fa-highlighter"></i> 螢光筆</a>
-    <form id="penform" name="penform">
+    <form style="margin:0" id="penform" name="penform">
         <a><input name="pen" id="pen" type="range" min="1" max="20" step="1" value="2"></a>
         <a><input readonly="readonly" name="penvalue" id="penvalue" size="1" style="text-align:center"></a>
         <a><input type="color" name="pencolor" id="pencolor" value="#000000"></a>
     </form>
     <a><i class="fas fa-font"></i><button onclick="textbox()" style="font-size: 17px;">文字</button></a>
 
-    <form id="text" name="text">
+    <form style="margin:0" id="text" name="text">
         <a><input name="text" id="text"></a>
     </form>
     <a href="#clients"><i class="fas fa-eraser"></i> 橡皮擦<input id="erasere" type="checkbox"></a>
 
-    <form id="image" name="image" method="POST" action="/image" enctype="multipart/form-data" onsubmit="return imgtocanvas(e)">
+    <form style="margin:0" id="image" name="image" method="POST" action="/image" enctype="multipart/form-data" onsubmit="return imgtocanvas(e)">
         @csrf
         @method('POST')
         <a><i class="fas fa-camera"></i> 圖片<input type="file" name="img" id="imgup" accept="image/*;" capture="camera" ></a>
@@ -79,7 +79,7 @@
             <button id="to" name="to" type="submit" value="send"></button>
         </div>
     </form>
-
+    <a href="/"><i class="fas fa-home home" style="color:#FFFFFF"></i></a>
     <a href="javascript:void(0);" class="icon" onclick="hidd()"><i class="fa fa-bars"></i></a>
 </div>
 
@@ -162,7 +162,9 @@
             text-align: left;
         }
     }
-
+    .home{
+        float: right;
+    }
 </style>
 <script>
 
