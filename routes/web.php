@@ -21,14 +21,14 @@ use App\Http\Controllers\NoteController;
 Route::get('/',[UserController::class,'home'])->name('home');
 
 //學生登入後頁面
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/students/home',[StudentController::class,'home'])
-    ->name('students.home');
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentController::class,'index'])
+    ->name('students.index');
 //課程頁面
 Route::get('/classes/1',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
 //顯示公告資訊
 Route::get('/notices/1',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
 //顯示所有筆記
-Route::get('/mynotes',[NoteController::class,'mynote'])->name('mynotes')->middleware('auth');
+Route::get('/mynotes',[NoteController::class,'mynote'])->name('notes.mynotes')->middleware('auth');
 //搜尋筆記
 Route::get('/notes/search',[NoteController::class,'search'])->name('notes.search')->middleware('auth');
 

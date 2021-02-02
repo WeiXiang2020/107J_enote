@@ -19,7 +19,7 @@ class UserController extends Controller
 
             switch (Auth::user()->type) {
                 case '學生':
-                    return redirect('students/home');
+                    return redirect('students');
                     break;
 
                 case '老師':

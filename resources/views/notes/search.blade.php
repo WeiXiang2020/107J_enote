@@ -52,7 +52,7 @@
                         {{$search->user->name}}
                     </td>
                     <td width="170" align="center">
-                        <a class="btn btn-primary btn-sm" href="/mynotes/{id}">檢視筆記</a>
+                        <a class="btn btn-primary btn-sm" href="/notes/{{$search->id}}">檢視筆記</a>
                     </td>
                 </tr>
                     </tbody>

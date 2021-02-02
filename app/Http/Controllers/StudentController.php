@@ -15,20 +15,13 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function home(Request $request)
-    {
-        $type= User::where('id', Auth::id())->value('type');
-//        $course= auth()->user()->student()->coursestudent()->;
-        if ($type=='學生'){
-            return view('students.home');
-
-        }
-
-    }
-
     public function index()
     {
-        //
+        $type= User::where('id', Auth::id())->value('type');
+        if ($type=='學生'){
+            return view('students.index');
+
+        }
     }
 
     /**
