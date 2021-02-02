@@ -66,8 +66,7 @@
 @elseif($ans==false)
 
 @endif
-
-    </div>
+</div>
 @endsection
 
 
