@@ -13,8 +13,9 @@
 
 @section('notice')
     <h4 class="mt-4">搜尋結果</h4>
-
     <div class="card-body">
+@if($ans==true)
+    @if(count($searchs)> 0)
         <div class="table-responsive">
 
         @foreach ($searchs as $search)
@@ -57,9 +58,15 @@
                     </tbody>
                 </table>
             </form>
-
         @endforeach
         </div>
+    @else
+       查無筆記
+    @endif
+@elseif($ans==false)
+
+@endif
+
     </div>
 @endsection
 
