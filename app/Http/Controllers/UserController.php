@@ -15,10 +15,19 @@ class UserController extends Controller
      */
     public function home()
     {
-        if(Auth::check()){
-            return redirect('students/home');
-        }
+        if(Auth::check()) {
 
+            switch (Auth::user()->type) {
+                case '學生':
+                    return redirect('students/home');
+                    break;
+
+                case '老師':
+                    return redirect('teacher');
+                    break;
+
+            }
+        }
         return view('auth/login');
     }
 
@@ -29,9 +38,18 @@ class UserController extends Controller
      */
     public function logout()
     {
-        if (Auth::check()) {
-            Auth::logout();
-            return redirect()->route('home');
+        if(Auth::check()){
+
+            switch(Auth::user()->type){
+                case '學生':
+                    return redirect('students/home');
+                    break;
+
+                case '老師':
+                    return redirect('teacher');
+                    break;
+
+            }
         }
     }
 

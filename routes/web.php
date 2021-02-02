@@ -48,3 +48,7 @@ Route::delete('notes/{id}',[NoteController::class,'destroy'])->name('notes.destr
 
 //分享/取消分享筆記
 Route::patch('share',[NoteController::class,'share'])->name('notes.share')->where('id', '[0-9]+');
+
+//教授首頁
+Route::get('/teacher', function () {
+    return view('teacher.index');});
