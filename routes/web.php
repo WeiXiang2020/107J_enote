@@ -52,3 +52,8 @@ Route::patch('share',[NoteController::class,'share'])->name('notes.share')->wher
 //教授首頁
 Route::get('/teacher', function () {
     return view('teacher.index');});
+
+//ta首頁
+Route::get('/ta', function () {
+    return view('ta.index');
+});
