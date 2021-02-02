@@ -190,6 +190,8 @@
                     context.globalAlpha = 1;
                     context.lineWidth = document.penform.pen.value;
                     context.strokeStyle = "#ffffff";
+                    var w=+lines[i].width[0];
+                    context.lineWidth=w+1;
                     context.globalCompositeOperation="destination-out";
                     context.beginPath();
                     context.moveTo(lines[i].start[0], lines[i].start[1]);
