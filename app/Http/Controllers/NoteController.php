@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourseStudent;
 use App\Models\Note;
+use App\Models\Student;
 use App\Models\Textbook;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -174,7 +175,8 @@ class NoteController extends Controller
     public function search(Request $request)
     {
         //撈出該學生所有修的課程
-        $courseId = CourseStudent::where('student_id',Auth::id())->get();
+        $student=Student::where('user_id',Auth::id())->value('id');
+        $courseId = CourseStudent::where('student_id', $student)->get();
         $courseId = $courseId->toArray();
         $courseId = array_column($courseId,'course_id');
 
@@ -183,11 +185,21 @@ class NoteController extends Controller
         $textBookId = $textBookId->toArray();
         $textBookId = array_column( $textBookId,'id');
         $search= $request->input('searchs');
+
+        if($search==null){//偵測有無輸入值
+            $ans=false;
+
+        }else{
+            $ans=true;
+        }
+
         //撈出標題符合關鍵字的筆記，且教材編號等於使用的教材編號
         $searchs=Note::where("title", "like", '%' . $search . '%')
-                    ->whereIn('textbook_id',$textBookId)
-                    ->get();
-        return view('notes.search',['searchs'=>$searchs]);
+            ->whereIn('textbook_id',$textBookId)
+            ->orWhere('textbook_id', null)
+            ->where("title", "like", '%' . $search . '%')
+            ->get();
+        return view('notes.search',['searchs'=>$searchs,'ans'=>$ans]);
 
     }
 
