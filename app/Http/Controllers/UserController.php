@@ -38,18 +38,9 @@ class UserController extends Controller
      */
     public function logout()
     {
-        if(Auth::check()){
-
-            switch(Auth::user()->type){
-                case '學生':
-                    return redirect('students/home');
-                    break;
-
-                case '老師':
-                    return redirect('teacher');
-                    break;
-
-            }
+        if (Auth::check()) {
+            Auth::logout();
+            return redirect()->route('home');
         }
     }
 
