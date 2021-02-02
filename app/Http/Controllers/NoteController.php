@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CourseStudent;
 use App\Models\Note;
 use App\Models\Textbook;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -80,11 +81,30 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show($id,Request $request)
     {
-        //
-    }
 
+        $jsonname = Note::where('id', $id)->value('textfile');
+        $id = Note::where('id', $id)->value('id');
+        $user_id = Note::where('id', $id)->value('user_id');
+        $login = User::where('id', $request->user()->id)->value('id');
+        if ($id && $user_id === $login) {
+            $notename = str_replace(".json", "", $jsonname);
+
+//        $notes=Note::where('class',$class)->paginate(1);//分頁測試
+
+            $file = Storage::disk('public')->get('\\json\\' . $jsonname);
+
+
+            //這個是抓留言資料
+//            $comment=Comment::where('note_id',$id)->value('content');
+            return view('notes.show', ['id' => $id, 'json' => $file, 'name' => $notename]);
+        } else if ($user_id !== $login) {
+            return redirect('notes/create')->with('alert', '無權限編輯該筆記');
+        } else {
+            return redirect('notes/create')->with('alert', '無此ID筆記，請新建');
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,9 +123,39 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request)
     {
-        //
+
+        $this->validate($request, [
+//            'class' => 'required',
+            'notename' => 'required',
+            'json' => 'required',
+        ]);
+
+        $json=$request->json;
+        Storage::disk('public')->put('\\json\\'.$request->notename.'.json', $json);
+        $path=$request->notename.'.json';
+        Note::whereId($request->id)->update([
+            'time'=>now(),
+            'textfile'=>$path
+        ]);
+
+    }
+
+    public function share(Request $request)
+    {
+
+        if($request->has('share')){
+            $request->share=1;
+        }else{
+            $request->share=0;
+        }
+
+        Note::whereId($request->id)->update([
+            'share' => $request->share,
+        ]);
+
+        return redirect('notes/'.$request->id);
     }
 
     /**
@@ -114,9 +164,11 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy($id)
     {
-        //
+        $delete = Note::where('id', $id);
+        $delete->delete();
+        return redirect('/mynotes');
     }
 
     public function search(Request $request)

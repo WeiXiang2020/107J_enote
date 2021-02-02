@@ -39,15 +39,16 @@
                                             @endif
                                         </td>
                                         <td width="170" align="center">
-                                        <a class="btn btn-primary btn-sm" href="/mynotes/{{$note->id}}">檢視筆記</a>
-                                        <form action="/mynotes/{{$note->id}}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <input name="delete" type="submit" onclick="javascript: form.action='/mynotes/{{$note->id}}';" value="刪除筆記"  class="btn btn-danger btn-sm" >
+                                        <a class="btn btn-primary btn-sm" href="/notes/{{$note->id}}">檢視筆記</a>
+                                </form>
+                                        <form action="/notes/{{$note->id}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm">刪除筆記</button>
                                         </form>
                                     </td>
                                     </tr>
-                                </form>
+
 {{--                                @endfor--}}
                                 @endforeach
                                 </tbody>

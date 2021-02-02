@@ -39,3 +39,12 @@ Route::post('image',[NoteController::class,'image'])->name('notes.image')->where
 
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
+//顯示&編輯筆記
+Route::get('notes/{id}',[NoteController::class,'show'])->name('notes.show')->where('id', '[0-9]+');
+Route::patch('notes',[NoteController::class,'update'])->name('notes.update');
+
+//刪除筆記
+Route::delete('notes/{id}',[NoteController::class,'destroy'])->name('notes.destroy')->where('id', '[0-9]+');
+
+//分享/取消分享筆記
+Route::patch('share',[NoteController::class,'share'])->name('notes.share')->where('id', '[0-9]+');
