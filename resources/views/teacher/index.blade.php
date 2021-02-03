@@ -1,5 +1,14 @@
 {{$courses}}
 @extends('layouts/home')
+
+@section('courses')
+    @if ($courses -> count() > 0)
+
+        
+    @endif
+    <a class="collapse-item" href="{{route('classes.index')}}">統計學</a>
+@endsection
+
 @section('search')
     <div class="search-container">
         <form action="{{route('notes.search')}}" class="ml-md-3">
