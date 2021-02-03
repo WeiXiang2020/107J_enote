@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -15,7 +16,8 @@ class CourseController extends Controller
     public function index($id)
     {
         $course=Course::find($id);
-        return view('classes.index',['course'=>$course]);
+        $notices=Notice::where('course_id',$id)->get();
+        return view('classes.index',['course'=>$course,'notices'=>$notices]);
     }
 
     /**

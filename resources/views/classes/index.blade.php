@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>標題</th>
@@ -21,20 +21,32 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                @foreach ($carts as $cart)--}}
-                                        {{ csrf_field() }}
+
+                                @foreach ($notices as $notice)
+                                <form  method="POST" role="form" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('POST') }}
 
                                     <tr>
-                                    <td >Tiger Nixon</td>
-                                    <td width="180">System Architect</td>
+                                    <td >
+                                        {{$notice -> title}}
+                                    </td>
+                                    <td>
+                                        @if($notice->teacher_id==null)
+                                            {{\App\Models\Student::where('id',$notice->ta_id)-> first()->user()->value('name')}}
+                                        @elseif($notice->ta_id==null)
+                                            {{\App\Models\Teacher::where('id',$notice->teacher_id)-> first()->user()->value('name')}}
+                                        @endif
+                                    </td>
                                     <td width="100" align="center">
-                                        <form action="/notices/1" method="POST">
+                                        <form action="/notices/{{$notice->id}}" method="POST">
                                             {{ csrf_field() }}
-                                            <a class="btn btn-outline-dark btn-sm" href="{{route('notices.show')}}" >檢視公告</a>
+                                            <a class="btn btn-outline-dark btn-sm" href="/notices/{{$notice->id}}" >檢視公告</a>
                                         </form>
                                     </td>
                                     </tr>
-{{--                                @endforeach        --}}
+                                </form>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
