@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CollectNoteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -51,6 +52,18 @@ Route::delete('notes/{id}',[NoteController::class,'destroy'])->name('notes.destr
 //分享/取消分享筆記
 Route::patch('share',[NoteController::class,'share'])->name('notes.share')->where('id', '[0-9]+');
 
+//顯示課堂筆記(學生)
+Route::get('/notes/classes/{id}', [NoteController::class,'cshow'])->name('notes.classes.cshow')->where('id', '[0-9]+');
+
+//收藏/取消收藏
+Route::post('favor',[CollectNoteController::class,'store'])->name('favor.store');
+
+//ta首頁
+Route::get('/ta', function () {
+    return view('ta.index');
+});
+
+
 #教授
     Route::prefix('teacher')->group(function (){
 
@@ -65,7 +78,3 @@ Route::patch('share',[NoteController::class,'share'])->name('notes.share')->wher
         ])  ->name('teacher.course');
     });
 
-//ta首頁
-Route::get('/ta', function () {
-    return view('ta.index');
-});

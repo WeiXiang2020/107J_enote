@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CollectNote;
+use App\Models\Comment;
 use App\Models\CourseStudent;
 use App\Models\Note;
 use App\Models\Student;
@@ -105,6 +107,37 @@ class NoteController extends Controller
         } else {
             return redirect('notes/create')->with('alert', '無此ID筆記，請新建');
         }
+    }
+
+    public function cshow($id,Request $request)
+    {
+
+        $jsonname=Note::where('id',$id)->value('textfile');
+//        $class=Note::where('id',$id)->value('class');
+        $id=Note::where('id',$id)->value('id');
+
+        $favor=CollectNote::where('note_id',$id)->where('user_id',$request->user()->id)->value('note_id');
+        if($favor){
+            $favor=1;
+        }else{
+            $favor=0;
+        }
+
+
+        $notename = str_replace(".json","",$jsonname);
+
+//        $notes=Note::where('class',$class)->paginate(1);//分頁測試
+
+//        $file=Storage::disk('public')->get('\\json\\'.$class.'\\'.$jsonname);
+        $file = Storage::disk('public')->get('\\json\\' . $jsonname);
+//        Storage::allFiles('user_images');
+
+        //這個是抓留言資料
+        $comment=Comment::where('note_id',$id)->value('content');
+
+        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comment'=>$comment,'favor'=>$favor]);
+//        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
+
     }
     /**
      * Show the form for editing the specified resource.

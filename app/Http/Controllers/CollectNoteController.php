@@ -35,7 +35,26 @@ class CollectNoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id' => 'required',
+        ]);
+//dd($request->heart);
+        if($request->has('heart')){
+            $request->heart=1;
+
+            CollectNote::create([
+                'user_id'=>$request->user()->id,
+                'note_id'=>$request->id,
+            ]);
+        }else{
+            $request->heart=0;
+
+            $delete = CollectNote::where('note_id', $request->id)->where('user_id',$request->user()->id);
+            $delete->delete();
+
+        }
+
+        return redirect('notes/classes/'.$request->id);
     }
 
     /**
