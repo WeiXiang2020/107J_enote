@@ -20,6 +20,7 @@
         @method('PATCH')
         <div style="display:none">
             id：<input name="id" id="id" value="{{$id}}">
+            分享狀態：<input id="sharestatus" name="sharestatus" value="{{$share}}">
         </div>
 {{--        //下面是跟課程有關的 20210127 (先註解,之後要弄回來)--}}
         {{--    課程：<input name="class" id="class" value="{{$class}}"><br>--}}
@@ -414,7 +415,14 @@
             context.closePath();
         }
 
+        if(document.json.sharestatus.value==="0"){
 
+            document.getElementById("sharebox").checked = false;
+        }
+        if(document.json.sharestatus.value==="1"){
+
+            document.getElementById("sharebox").checked = true;
+        }
 
     },false);
     const linetext= []

@@ -89,6 +89,12 @@ class NoteController extends Controller
 
         $jsonname = Note::where('id', $id)->value('textfile');
         $id = Note::where('id', $id)->value('id');
+        $share=Note::where('id',$id)->value('share');
+        if($share){
+            $share=1;
+        }else{
+            $share=0;
+        }
         $user_id = Note::where('id', $id)->value('user_id');
         $login = User::where('id', $request->user()->id)->value('id');
         if ($id && $user_id === $login) {
@@ -101,7 +107,7 @@ class NoteController extends Controller
 
             //這個是抓留言資料
 //            $comment=Comment::where('note_id',$id)->value('content');
-            return view('notes.show', ['id' => $id, 'json' => $file, 'name' => $notename]);
+            return view('notes.show', ['id' => $id, 'json' => $file, 'name' => $notename,'share'=>$share]);
         } else if ($user_id !== $login) {
             return redirect('notes/create')->with('alert', '無權限編輯該筆記');
         } else {
