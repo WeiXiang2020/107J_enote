@@ -6,7 +6,7 @@
 
         @foreach($courses as $course)
             <a class="collapse-item"
-               href="{{route('classes.index')}}"
+               href="{{'teacher/'. $course -> id}}"
             >
                 {{$course -> name}}
             </a>
