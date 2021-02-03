@@ -51,10 +51,19 @@ Route::delete('notes/{id}',[NoteController::class,'destroy'])->name('notes.destr
 //分享/取消分享筆記
 Route::patch('share',[NoteController::class,'share'])->name('notes.share')->where('id', '[0-9]+');
 
-//教授首頁
-Route::get('/teacher',[
-    TeacherController::class,'index'
-])  -> name('teacher.index');
+#教授
+    Route::prefix('teacher')->group(function (){
+
+    //首頁
+        Route::get('',[
+            TeacherController::class,'index'
+        ])  -> name('teacher.index');
+
+    //課程
+        Route::get('{course}',[
+            TeacherController::class,'course'
+        ])  ->name('teacher.course');
+    });
 
 //ta首頁
 Route::get('/ta', function () {

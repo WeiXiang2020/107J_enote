@@ -21,6 +21,15 @@ class TeacherController extends Controller
         return view('teacher.index',);
     }
 
+    public function course(Request $request){
+        $courses = Teacher::where(
+            'user_id',Auth::user()->id
+        )-> first() ->courses() -> get();
+
+        return view('teacher.course');
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
