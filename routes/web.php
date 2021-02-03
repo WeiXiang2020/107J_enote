@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\NoteController;
 
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TaController;
 /*
 |--------------------------------------------------------------------------
