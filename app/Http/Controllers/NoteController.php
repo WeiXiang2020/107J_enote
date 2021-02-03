@@ -122,6 +122,8 @@ class NoteController extends Controller
 //        $class=Note::where('id',$id)->value('class');
         $id=Note::where('id',$id)->value('id');
 
+        $uname=User::where('id',$request->user()->id)->value('name');
+
         $favor=CollectNote::where('note_id',$id)->where('user_id',$request->user()->id)->value('note_id');
         if($favor){
             $favor=1;
@@ -141,7 +143,7 @@ class NoteController extends Controller
         //這個是抓留言資料
         $comment=Comment::where('note_id',$id)->value('content');
 
-        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comment'=>$comment,'favor'=>$favor]);
+        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comment'=>$comment,'favor'=>$favor,'uname'=>$uname]);
 //        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
 
     }

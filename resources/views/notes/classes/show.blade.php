@@ -76,7 +76,6 @@
 
 
 
-//下面是跟留言有關的
 <form id="comments" name="comments" method="POST" action="/comments">
     @csrf
     @method('POST')
@@ -84,7 +83,7 @@
     <div style="display: none">
         <input id="note_id" name="note_id" value="{{$id}}">
     </div>
-    <input readonly="readonly" id="" name="" value="載入留言者 姓名(不可更改)">
+    <input readonly="readonly" id="" name="" value="{{$uname}}">
     <textarea id="contents" name="contents">留言內容</textarea>
     <button>留言</button>
 </form>

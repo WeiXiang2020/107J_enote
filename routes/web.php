@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CollectNoteController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,9 @@ Route::get('/notes/classes/{id}', [NoteController::class,'cshow'])->name('notes.
 
 //收藏/取消收藏
 Route::post('favor',[CollectNoteController::class,'store'])->name('favor.store');
+
+//筆記留言
+Route::post('/comments',[CommentController::class,'store'])->name('comments.store');
 
 //ta首頁
 Route::get('/ta', function () {

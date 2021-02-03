@@ -35,7 +35,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'contents' => 'required',
+            'note_id'=>'required',
+        ]);
+
+        Comment::create([
+            'user_id'=>$request->user()->id,
+            'content'=>$request->contents,
+            'note_id'=>$request->note_id,
+            'time'=>now(),
+        ]);
     }
 
     /**
