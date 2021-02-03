@@ -4,9 +4,15 @@
 @section('courses')
     @if ($courses -> count() > 0)
 
-        
+        @foreach($courses as $course)
+            <a class="collapse-item"
+               href="{{route('classes.index')}}"
+            >
+                {{$course -> name}}
+            </a>
+        @endforeach
+
     @endif
-    <a class="collapse-item" href="{{route('classes.index')}}">統計學</a>
 @endsection
 
 @section('search')
