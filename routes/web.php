@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentCon
 //課程頁面
 Route::get('/classes/{id}',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
 //顯示公告資訊
-Route::get('/Route::get('/notices/{id}',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');notices/{id}',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
+Route::get('/notices/{id}',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
 //顯示所有筆記
 Route::get('/mynotes',[NoteController::class,'mynote'])->name('notes.mynotes')->middleware('auth');
 //搜尋筆記
