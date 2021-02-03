@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TextbookController;
 
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TaController;
@@ -28,7 +29,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentCon
 //課程頁面
 Route::get('/classes/{id}',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
 //顯示公告資訊
-Route::get('/notices/1',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
+Route::get('/notices/{id}',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
 //顯示所有筆記
 Route::get('/mynotes',[NoteController::class,'mynote'])->name('notes.mynotes')->middleware('auth');
 //搜尋筆記
@@ -64,7 +65,7 @@ Route::patch('share',[NoteController::class,'share'])->name('notes.share')->wher
             TeacherController::class,'course'
         ])  ->name('teacher.course');
     });
-
+    
 //ta首頁
 Route::get('/ta', function () {
     return view('ta.index');
