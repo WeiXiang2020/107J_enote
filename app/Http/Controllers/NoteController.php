@@ -140,10 +140,9 @@ class NoteController extends Controller
         $file = Storage::disk('public')->get('\\json\\' . $jsonname);
 //        Storage::allFiles('user_images');
 
-        //這個是抓留言資料
-        $comment=Comment::where('note_id',$id)->value('content');
-
-        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comment'=>$comment,'favor'=>$favor,'uname'=>$uname]);
+    
+        $comments=Comment::where('note_id',$id)->get();
+        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comments'=>$comments,'favor'=>$favor,'uname'=>$uname,]);
 //        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
 
     }

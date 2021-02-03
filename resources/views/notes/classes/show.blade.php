@@ -89,8 +89,11 @@
 </form>
 
 顯示留言<i class="far fa-comment-dots"></i>
-<input readonly="readonly" id="" name="" value="載入留言者 姓名(不可更改)">
-<textarea readonly="readonly">{{$comment}}</textarea>
+@foreach($comments as $comment)
+<input readonly="readonly" id="" name="" value="{{$comment->user_id}}">
+<textarea readonly="readonly">{{$comment->content}}</textarea>
+    <br><br>
+@endforeach
 <button>判斷身分如果是該使用者的話會出現"回覆"按鈕</button>
 點回覆按鈕會展開textarea輸入 然後按下'送出" 就會回覆
 
