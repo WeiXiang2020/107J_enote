@@ -1,20 +1,4 @@
-{{$courses}}
 @extends('layouts/home')
-
-@section('courses')
-    @if ($courses -> count() > 0)
-
-        @foreach($courses as $course)
-            <a class="collapse-item"
-               href="{{route('classes.index')}}"
-            >
-                {{$course -> name}}
-            </a>
-        @endforeach
-
-    @endif
-@endsection
-
 @section('search')
     <div class="search-container">
         <form action="{{route('notes.search')}}" class="ml-md-3">

@@ -18,12 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $courses = Teacher::where(
-            'user_id',Auth::user()->id
-        )-> first() ->courses() -> get();
-
-        return view('teacher.index',
-        ['courses' => $courses]);
+        return view('teacher.index',);
     }
 
     /**

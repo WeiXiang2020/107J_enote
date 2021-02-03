@@ -4,7 +4,7 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h2 class="mt-4">統計學</h2>
+                <h2 class="mt-4">{{$course->name}}</h2>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table mr-1"></i>

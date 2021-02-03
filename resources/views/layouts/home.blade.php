@@ -89,7 +89,16 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">已選課程:</h6>
-                    <a class="collapse-item" href="{{route('classes.index')}}">統計學</a>
+                    @php
+                        $student=\App\Models\Student::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('id');
+                        $courses = \App\Models\Student::where(
+                                'user_id',$student)-> first() ->courses() -> get();
+                    @endphp
+                    @if ($courses -> count() > 0)
+                        @foreach($courses as $course)
+                            <a class="collapse-item" href="/classes/{{ $course->id }}" >{{$course -> name}}</a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </li>
@@ -163,7 +172,15 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">已選課程:</h6>
 
-                            @yield( 'courses' )
+                            @php
+                                $courses = \App\Models\Teacher::where(
+                                    'user_id',\Illuminate\Support\Facades\Auth::user()->id)-> first() ->courses() -> get();
+                            @endphp
+                            @if ($courses -> count() > 0)
+                                @foreach($courses as $course)
+                                    <a class="collapse-item" href="/classes/{{ $course->id }}" >{{$course -> name}}</a>
+                                @endforeach
+                            @endif
 
                         </div>
                     </div>

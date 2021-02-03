@@ -26,7 +26,7 @@ Route::get('/',[UserController::class,'home'])->name('home');
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentController::class,'index'])
     ->name('students.index');
 //課程頁面
-Route::get('/classes/1',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
+Route::get('/classes/{id}',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
 //顯示公告資訊
 Route::get('/notices/1',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
 //顯示所有筆記
