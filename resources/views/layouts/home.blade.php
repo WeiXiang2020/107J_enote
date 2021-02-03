@@ -213,7 +213,7 @@
                 </div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/questions">
+                    <a class="nav-link" href="#">
                         <i class="fas fa-fw fa-comment"></i>
                         <span>與Ta聯繫</span></a>
                 </li>
