@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\User;
 
 class TeacherController extends Controller
 {
@@ -14,7 +18,12 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Teacher::where(
+            'user_id',Auth::user()->id
+        )-> first() ->courses() -> get();
+
+        return view('teacher.index',
+        ['courses' => $courses]);
     }
 
     /**

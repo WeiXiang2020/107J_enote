@@ -7,6 +7,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\NoteController;
 
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,8 +52,9 @@ Route::delete('notes/{id}',[NoteController::class,'destroy'])->name('notes.destr
 Route::patch('share',[NoteController::class,'share'])->name('notes.share')->where('id', '[0-9]+');
 
 //教授首頁
-Route::get('/teacher', function () {
-    return view('teacher.index');});
+Route::get('/teacher',[
+    TeacherController::class,'index'
+])  -> name('teacher.index');
 
 //ta首頁
 Route::get('/ta', function () {
