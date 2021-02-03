@@ -92,7 +92,7 @@
                     @php
                         $student=\App\Models\Student::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('id');
                         $courses = \App\Models\Student::where(
-                                'user_id',$student)-> first() ->courses() -> get();
+                                'id',$student)-> first() ->courses() -> get();
                     @endphp
                     @if ($courses -> count() > 0)
                         @foreach($courses as $course)

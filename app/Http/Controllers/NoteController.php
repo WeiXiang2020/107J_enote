@@ -235,8 +235,10 @@ class NoteController extends Controller
         //撈出標題符合關鍵字的筆記，且教材編號等於使用的教材編號
         $searchs=Note::where("title", "like", '%' . $search . '%')
             ->whereIn('textbook_id',$textBookId)
+            ->where('share',1)
             ->orWhere('textbook_id', null)
             ->where("title", "like", '%' . $search . '%')
+            ->where('share',1)
             ->get();
         return view('notes.search',['searchs'=>$searchs,'ans'=>$ans]);
 
