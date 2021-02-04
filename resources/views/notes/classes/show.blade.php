@@ -103,7 +103,9 @@
         width: 1191px;
         height: 1684px;
     }
-
+    body{
+        background: #F0F0F0;
+    }
     .btn-hover:hover {
         background: #F95738;
     }
@@ -223,6 +225,9 @@
             context.fillText(objson[0][j].text, objson[0][j].location[0],objson[0][j].location[1]);
         }
         for(var i=0 ; i < objson[1].length ; i++){
+            context.globalAlpha = 0.5;
+            context.lineWidth=objson[1][i].width[0]
+            context.strokeStyle = objson[1][i].color[0];
             context.beginPath();
             context.moveTo(objson[1][i].start[0],objson[1][i].start[1]);
             context.lineTo(objson[1][i].end[0],objson[1][i].end[1]);
