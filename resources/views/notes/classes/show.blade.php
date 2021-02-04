@@ -20,7 +20,7 @@
         課程：<input name="class" id="class" value=""><br>
         筆記名稱：<input name="notename" id="notename" value="{{$name}}"><br>
         收藏狀態：<input id="favorstatus" name="favorstatus" value="{{$favor}}">
-        收藏狀態：<input id="scorestatus" name="scorestatus" value="{{$sscore}}">
+        評分狀態：<input id="scorestatus" name="scorestatus" value="{{$sscore}}">
         <img id="jsonimg" width="220" height="277"
              src="" alt="">
     </div>
