@@ -52,7 +52,11 @@
                         {{$search->user->name}}
                     </td>
                     <td width="170" align="center">
+                        @if($search->user_id==$id)
                         <a class="btn btn-primary btn-sm" href="/notes/{{$search->id}}">檢視筆記</a>
+                        @else
+                        <a class="btn btn-primary btn-sm" href="/notes/classes/{{$search->id}}">檢視筆記</a>
+                        @endif
                     </td>
                 </tr>
                     </tbody>

@@ -140,7 +140,7 @@ class NoteController extends Controller
         $file = Storage::disk('public')->get('\\json\\' . $jsonname);
 //        Storage::allFiles('user_images');
 
-    
+
         $comments=Comment::where('note_id',$id)->get();
         return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comments'=>$comments,'favor'=>$favor,'uname'=>$uname,]);
 //        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
@@ -214,6 +214,7 @@ class NoteController extends Controller
 
     public function search(Request $request)
     {
+        $id=$request->user()->id;
         //撈出該學生所有修的課程
         $student=Student::where('user_id',Auth::id())->value('id');
         $courseId = CourseStudent::where('student_id', $student)->get();
@@ -241,7 +242,7 @@ class NoteController extends Controller
             ->where("title", "like", '%' . $search . '%')
             ->where('share',1)
             ->get();
-        return view('notes.search',['searchs'=>$searchs,'ans'=>$ans]);
+        return view('notes.search',['searchs'=>$searchs,'ans'=>$ans,'id'=>$id]);
 
     }
 
