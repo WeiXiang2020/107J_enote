@@ -6,6 +6,7 @@ use App\Models\CollectNote;
 use App\Models\Comment;
 use App\Models\CourseStudent;
 use App\Models\Note;
+use App\Models\NoteScore;
 use App\Models\Student;
 use App\Models\Textbook;
 use App\Models\User;
@@ -131,6 +132,10 @@ class NoteController extends Controller
             $favor=0;
         }
 
+        $score=NoteScore::where('note_id',$id)->where('user_id',$request->user()->id)->value('score');
+        if($score){
+            $sscore=$score;
+        }
 
         $notename = str_replace(".json","",$jsonname);
 
@@ -142,8 +147,7 @@ class NoteController extends Controller
 
 
         $comments=Comment::where('note_id',$id)->get();
-        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comments'=>$comments,'favor'=>$favor,'uname'=>$uname,]);
-//        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
+        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'comments'=>$comments,'favor'=>$favor,'uname'=>$uname,'sscore'=>$sscore]);//        return view('notes.classes.show',['id'=>$id,'json'=>$file,'name'=>$notename,'class'=>$class,'comment'=>$comment,'share'=>$share,'favor'=>$favor]);
 
     }
     /**

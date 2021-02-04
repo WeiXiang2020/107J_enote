@@ -20,6 +20,7 @@
         課程：<input name="class" id="class" value=""><br>
         筆記名稱：<input name="notename" id="notename" value="{{$name}}"><br>
         收藏狀態：<input id="favorstatus" name="favorstatus" value="{{$favor}}">
+        收藏狀態：<input id="scorestatus" name="scorestatus" value="{{$sscore}}">
         <img id="jsonimg" width="220" height="277"
              src="" alt="">
     </div>
@@ -250,6 +251,29 @@
         if(document.json.favorstatus.value==="1"){
 
             document.getElementById("heart").checked = true;
+        }
+
+        switch (document.json.scorestatus.value) {
+        case '1':
+            document.getElementById("star-1").checked = true;
+            break;
+
+        case '2':
+            document.getElementById("star-2").checked = true;
+            break;
+
+        case '3':
+            document.getElementById("star-3").checked = true;
+            break;
+
+        case '4':
+            document.getElementById("star-4").checked = true;
+            break;
+
+        case '5':
+            document.getElementById("star-5").checked = true;
+             break;
+
         }
     },false);
 </script>
