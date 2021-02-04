@@ -46,14 +46,19 @@
 
 
 <div class="move">
-    <button onclick="score()" id="score" class="btn-hover">評分</button>
+    <button onclick="scorebtn()" id="scorebtn" class="btn-hover">評分</button>
     <input class="hideable hide" type="text" name="name" placeholder="輸入評分">
 </div>
 
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <div class="stars hideable hide move">
-    <form action="">
+    <form action="/score" method="POST" id="score" name="score">
+        @csrf
+        @method('POST')
+        <div style="display:none">
+            id：<input name="id" id="id" value="{{$id}}"><br>
+        </div>
         <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
         <label class="star star-5" for="star-5"></label>
         <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
@@ -64,6 +69,7 @@
         <label class="star star-2" for="star-2"></label>
         <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
         <label class="star star-1" for="star-1"></label>
+        <button>送出</button>
     </form>
 </div>
 <br>
@@ -251,7 +257,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 <script>
-    function score(){
+    function scorebtn(){
         $('.move').toggleClass('slided');
         $('.hideable').toggleClass('hide').toggleClass('show');
     }

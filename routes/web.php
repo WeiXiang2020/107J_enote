@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CollectNoteController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NoteScoreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -62,6 +63,10 @@ Route::post('favor',[CollectNoteController::class,'store'])->name('favor.store')
 
 //筆記留言
 Route::post('/comments',[CommentController::class,'store'])->name('comments.store');
+
+//筆記評分
+Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
+
 
 //ta首頁
 Route::get('/ta', function () {

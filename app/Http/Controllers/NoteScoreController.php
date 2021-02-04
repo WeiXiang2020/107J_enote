@@ -35,7 +35,16 @@ class NoteScoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'star' => 'required',
+            'id'=>'required'
+        ]);
+        NoteScore::create([
+            'user_id'=>$request->user()->id,
+            'note_id'=>$request->id,
+            'score'=>$request->star,
+            'time'=>now()
+            ]);
     }
 
     /**
