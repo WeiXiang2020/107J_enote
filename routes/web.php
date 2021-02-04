@@ -82,12 +82,3 @@ Route::get('/ta', function () {
             TeacherController::class,'course'
         ])  ->name('teacher.course');
     });
-<<<<<<< HEAD
-
-=======
-
-//ta首頁
-Route::get('/ta', function () {
-    return view('ta.index');
-});
->>>>>>> 445039be18036407b68697817498b16cf37b7b30
