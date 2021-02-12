@@ -18,7 +18,13 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('teacher.index',);
+        $courses = Teacher::where(
+            'user_id',Auth::user()->id
+        )-> first() ->courses() -> get();
+
+        return view('teacher.index',
+            ['courses' => $courses]
+        );
     }
 
     public function course(Request $request){
@@ -26,7 +32,9 @@ class TeacherController extends Controller
             'user_id',Auth::user()->id
         )-> first() ->courses() -> get();
 
-        return view('teacher.course');
+        return view('teacher.course',
+            ['courses' => $courses]
+        );
 
     }
 

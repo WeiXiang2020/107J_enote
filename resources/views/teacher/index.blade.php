@@ -1,3 +1,4 @@
+{{ $courses }}
 @extends('layouts/home')
 @section('search')
     <div class="search-container">
@@ -6,6 +7,19 @@
             <button type="submit" class="btn btn-primary" style="border-radius:10px;"><i class="fa fa-search fa-1g"></i></button>
         </form>
     </div>
+@endsection
+
+
+
+
+@section('courses')
+
+            @if ($courses -> count() > 0)
+                @foreach($courses as $course)
+                    <a class="collapse-item" href="/teacher/{{ $course->id }}" >{{$course -> name}}</a>
+                @endforeach
+            @endif
+
 @endsection
 
 

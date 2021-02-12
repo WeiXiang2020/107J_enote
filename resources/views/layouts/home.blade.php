@@ -89,16 +89,17 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">已選課程:</h6>
+
                     @php
-                        $student=\App\Models\Student::where('user_id',\Illuminate\Support\Facades\Auth::id())->value('id');
                         $courses = \App\Models\Student::where(
-                                'id',$student)-> first() ->courses() -> get();
+                            'user_id',\Illuminate\Support\Facades\Auth::user()->id)-> first() ->courses() -> get();
                     @endphp
                     @if ($courses -> count() > 0)
                         @foreach($courses as $course)
                             <a class="collapse-item" href="/classes/{{ $course->id }}" >{{$course -> name}}</a>
                         @endforeach
                     @endif
+
                 </div>
             </div>
         </li>
@@ -172,15 +173,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">已選課程:</h6>
 
-                            @php
-                                $courses = \App\Models\Teacher::where(
-                                    'user_id',\Illuminate\Support\Facades\Auth::user()->id)-> first() ->courses() -> get();
-                            @endphp
-                            @if ($courses -> count() > 0)
-                                @foreach($courses as $course)
-                                    <a class="collapse-item" href="/classes/{{ $course->id }}" >{{$course -> name}}</a>
-                                @endforeach
-                            @endif
+                            @yield('courses')
 
                         </div>
                     </div>
@@ -256,6 +249,7 @@
 
                 <!-- Topbar Search -->
                 @yield('search')
+                @yield('site')
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <style>
                     * {box-sizing: border-box;}
