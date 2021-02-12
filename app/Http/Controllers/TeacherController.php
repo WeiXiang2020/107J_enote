@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Notice;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,13 +28,20 @@ class TeacherController extends Controller
         );
     }
 
-    public function course(Request $request){
+    public function course(Request $request , $course){
+
+        $notices = Course:: where(
+          'id' , $course
+        )  ->first() ->notices() ->get();
+
         $courses = Teacher::where(
             'user_id',Auth::user()->id
         )-> first() ->courses() -> get();
 
         return view('teacher.course',
-            ['courses' => $courses]
+            ['courses' => $courses],
+            ['notices' => $notices],
+            ['id' => $course]
         );
 
     }

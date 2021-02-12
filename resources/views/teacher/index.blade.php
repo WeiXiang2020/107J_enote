@@ -9,16 +9,30 @@
     </div>
 @endsection
 
+@section('site')
+    <input type="button"
+           onclick="location.href = 'teacher/notice/1'"
+           value="公告"
+    />
+    <input type="button"
+           onclick="location.href = 'teacher/TA/1'"
+           value="TA"
+    />
+
+@endsection
 
 
 
 @section('courses')
 
-            @if ($courses -> count() > 0)
-                @foreach($courses as $course)
-                    <a class="collapse-item" href="/teacher/{{ $course->id }}" >{{$course -> name}}</a>
-                @endforeach
-            @endif
+    @if ($courses -> count() > 0)
+        @foreach($courses as $course)
+            <a class="collapse-item" href="/teacher/{{ $course->id }}"
+            >
+                {{$course -> name}}
+            </a>
+        @endforeach
+    @endif
 
 @endsection
 
