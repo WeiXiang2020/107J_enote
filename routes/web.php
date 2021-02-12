@@ -86,4 +86,14 @@ Route::get('/ta', function () {
         Route::get('{course}',[
             TeacherController::class,'course'
         ])  ->name('teacher.course');
+
+    //新增公告
+        Route::get('notice/create',[
+            NoticeController::class,'create'
+        ]) -> name('teacher.notice.create');
+
+
+
     });
+
+

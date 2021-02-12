@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoticeController extends Controller
 {
@@ -24,7 +26,10 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('notices.create' ,
+            ['user' => $user]
+        );
     }
 
     /**

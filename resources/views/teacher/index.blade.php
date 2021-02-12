@@ -18,7 +18,6 @@
            onclick="location.href = 'teacher/TA/1'"
            value="TA"
     />
-
 @endsection
 
 

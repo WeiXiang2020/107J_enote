@@ -14,6 +14,14 @@
     @endif
 @endsection
 
+@section('site')
+    <input type="button"
+           onclick="location.href = 'notice/create'"
+           value="新增公告"
+    />
+
+@endsection
+
 @section('notice')
     <div id="layoutSidenav_content">
         <main>
