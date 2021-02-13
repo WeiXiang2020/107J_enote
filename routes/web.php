@@ -96,4 +96,9 @@ Route::get('/ta', function () {
 
     });
 
+    //儲存公告
+    Route::post('notice/store',[
+        NoticeController::class,'store'
+    ]) -> name('notice.store');
+
 
