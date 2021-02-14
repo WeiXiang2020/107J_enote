@@ -33,7 +33,7 @@
 
                 <br>
 
-                <textarea name="content"
+                <textarea name="notice_content"
                           id="content"
                           placeholder="請輸入內容"
                           rows="8"

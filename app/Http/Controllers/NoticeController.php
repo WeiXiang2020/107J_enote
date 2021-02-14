@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Notice;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,16 +49,20 @@ class NoticeController extends Controller
 
         $notice = new Notice();
         if ($user -> type == '老師'){
-            $notice -> teacher_id = $user -> id ;
-            $notice -> ta_id = 'null';
+            $notice -> teacher_id = Teacher::where(
+                'user_id', $user ->id
+            ) -> get() -> first() -> id;
         }else{
-            $notice -> teacher_id = 'null';
             $notice -> ta_id = $user -> id ;
         }
+
         $notice -> course_id = $course_id;
         $notice -> title = $request->title;
-        $notice -> content = $request - content;
+        $notice -> content = $request -> notice_content;
+
         $notice -> save();
+
+        return back();
 
     }
 
