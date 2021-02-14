@@ -28,20 +28,24 @@ class TeacherController extends Controller
         );
     }
 
-    public function course(Request $request , $course){
+    public function course(Request $request ,$course_id){
 
         $notices = Course:: where(
-          'id' , $course
+          'id' , $course_id
         )  ->first() ->notices() ->get();
 
         $courses = Teacher::where(
             'user_id',Auth::user()->id
         )-> first() ->courses() -> get();
 
+        $select_course = Course::where(
+            'id' ,$course_id
+        )->get();
+
         return view('teacher.course',
             ['courses' => $courses],
             ['notices' => $notices],
-            ['id' => $course]
+            ['course'  => $select_course],
         );
 
     }

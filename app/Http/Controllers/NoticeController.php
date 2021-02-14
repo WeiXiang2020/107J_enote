@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,11 +25,14 @@ class NoticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($course_id)
     {
-        $user = Auth::user();
-        return view('notices.create' ,
-            ['user' => $user]
+        $course = Course::where(
+            'id' , $course_id
+        )->get()->first();
+
+        return view('notices.create',
+            ['course' => $course],
         );
     }
 
@@ -38,9 +42,23 @@ class NoticeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$course_id)
     {
-        //
+        $user = Auth::user();
+
+        $notice = new Notice();
+        if ($user -> type == '老師'){
+            $notice -> teacher_id = $user -> id ;
+            $notice -> ta_id = 'null';
+        }else{
+            $notice -> teacher_id = 'null';
+            $notice -> ta_id = $user -> id ;
+        }
+        $notice -> course_id = $course_id;
+        $notice -> title = $request->title;
+        $notice -> content = $request - content;
+        $notice -> save();
+
     }
 
     /**

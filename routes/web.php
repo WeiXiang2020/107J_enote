@@ -83,22 +83,21 @@ Route::get('/ta', function () {
         ])  -> name('teacher.index');
 
     //課程
-        Route::get('{course}',[
+        Route::get('{course_id}',[
             TeacherController::class,'course'
         ])  ->name('teacher.course');
 
     //新增公告
-        Route::get('notice/create',[
+        Route::get('{course_id}/notice/create',[
             NoticeController::class,'create'
         ]) -> name('teacher.notice.create');
 
-
+    //儲存公告
+        Route::post('{course_id}/notice/store',[
+            NoticeController::class,'store'
+        ]) -> name('notice.store');
 
     });
 
-    //儲存公告
-    Route::post('notice/store',[
-        NoticeController::class,'store'
-    ]) -> name('notice.store');
 
 
