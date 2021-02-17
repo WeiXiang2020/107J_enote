@@ -1,3 +1,7 @@
+{{$courses}}
+{{$notices}}
+
+
 
 @extends('layouts/textbook')
 

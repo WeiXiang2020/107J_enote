@@ -28,10 +28,10 @@ class TeacherController extends Controller
         );
     }
 
-    public function course(Request $request ,$course_id){
+    public function course(Request $request){
 
         $notices = Course:: where(
-          'id' , $course_id
+          'id' , $request -> course_id
         )  ->first() ->notices() ->get();
 
         $courses = Teacher::where(
@@ -39,13 +39,13 @@ class TeacherController extends Controller
         )-> first() ->courses() -> get();
 
         $select_course = Course::where(
-            'id' ,$course_id
-        )->get();
+            'id', $request -> course_id
+        )->get()->first();
 
         return view('teacher.course',
             ['courses' => $courses],
             ['notices' => $notices],
-            ['course'  => $select_course],
+            ['select_course' => $select_course]
         );
 
     }
