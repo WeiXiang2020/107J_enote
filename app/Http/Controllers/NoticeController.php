@@ -64,22 +64,26 @@ class NoticeController extends Controller
      */
     public function store(Request $request,$course_id)
     {
-        $user = Auth::user();
+        if($request -> title != '' &&
+            $request -> notice_content != ''
+        ) {
+            $user = Auth::user();
 
-        $notice = new Notice();
-        if ($user -> type == '老師'){
-            $notice -> teacher_id = Teacher::where(
-                'user_id', $user ->id
-            ) -> get() -> first() -> id;
-        }else{
-            $notice -> ta_id = $user -> id ;
+            $notice = new Notice();
+            if ($user->type == '老師') {
+                $notice->teacher_id = Teacher::where(
+                    'user_id', $user->id
+                )->get()->first()->id;
+            } else {
+                $notice->ta_id = $user->id;
+            }
+
+            $notice->course_id = $course_id;
+            $notice->title = $request->title;
+            $notice->content = $request->notice_content;
+
+            $notice->save();
         }
-
-        $notice -> course_id = $course_id;
-        $notice -> title = $request->title;
-        $notice -> content = $request -> notice_content;
-
-        $notice -> save();
 
         if ($request -> sub == 'finish'){
             return redirect() -> route('notice.index',$course_id);
