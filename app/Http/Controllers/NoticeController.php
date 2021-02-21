@@ -16,9 +16,27 @@ class NoticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($course_id)
     {
-        //
+        //!!!!!!!!缺身分驗證，確定使用者登入
+
+        if (Auth::user()->type == '老師'){
+            $courses = User::find(Auth::id())
+                -> teacher() -> first()
+                -> courses() -> get();
+        }
+
+        $selected = Course::find($course_id);
+
+        $notices = Course::find($course_id)->notices()->get();
+
+        return view ('notices.index',[
+            'selected' => $selected ,
+            'courses' => $courses ,
+            'notices' => $notices
+
+        ]);
+
     }
 
     /**

@@ -35,15 +35,18 @@ class TeacherController extends Controller
 
         $notices = Course::find($course_id)->notices()->get();
 
-        $courses = User::find(Auth::id()) ->teacher() -> first() -> courses() ->get() ;
+        $courses = User::find(Auth::id())
+            ->teacher() -> first()
+            -> courses() ->get() ;
 
 //        return $courses;
+
         return view ('teacher.course',[
                 'selected' => $selected ,
                 'courses' => $courses ,
                 'notices' => $notices
-            ]
-        );
+
+        ]);
 
     }
 
