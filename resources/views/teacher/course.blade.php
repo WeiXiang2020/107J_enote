@@ -1,8 +1,3 @@
-{{$courses}}
-{{$notices}}
-
-
-
 @extends('layouts/textbook')
 
 @section('courses')
@@ -18,7 +13,7 @@
 
 @section('site')
 
-    <b>課程: {{$course -> name}}</b>
+    <b>課程: {{$selected -> name}}</b>
     <input type="button"
            onclick="location.href = '{{$course -> id }}/notice/create'"
            value="新增公告"

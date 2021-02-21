@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -28,24 +29,20 @@ class TeacherController extends Controller
         );
     }
 
-    public function course(Request $request){
+    public function course(Request $request,$course_id){
 
-        $notices = Course:: where(
-          'id' , $request -> course_id
-        )  ->first() ->notices() ->get();
+        $selected = Course::find($course_id);
 
-        $courses = Teacher::where(
-            'user_id',Auth::user()->id
-        )-> first() ->courses() -> get();
+        $notices = Course::find($course_id)->notices()->get();
 
-        $select_course = Course::where(
-            'id', $request -> course_id
-        )->get()->first();
+        $courses = User::find(Auth::id()) ->teacher() -> first() -> courses() ->get() ;
 
-        return view('teacher.course',
-            ['courses' => $courses],
-            ['notices' => $notices],
-            ['select_course' => $select_course]
+//        return $courses;
+        return view ('teacher.course',[
+                'selected' => $selected ,
+                'courses' => $courses ,
+                'notices' => $notices
+            ]
         );
 
     }

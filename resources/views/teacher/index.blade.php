@@ -26,7 +26,7 @@
 
     @if ($courses -> count() > 0)
         @foreach($courses as $course)
-            <a class="collapse-item" href="/teacher/{{ $course->id }}"
+            <a class="collapse-item" href="/teacher/{{$course->id}}"
             >
                 {{$course -> name}}
             </a>

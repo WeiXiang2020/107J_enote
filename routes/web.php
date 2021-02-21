@@ -99,5 +99,9 @@ Route::get('/ta', function () {
 
     });
 
+Route::get('test/{test_id}',function ($test_id = 1){
+    return $test_id;
+});
+
 
 
