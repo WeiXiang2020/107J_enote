@@ -32,9 +32,10 @@ class NoticeController extends Controller
             'id' , $course_id
         )->get()->first();
 
-        return view('notices.create',
-            ['course' => $course],
-        );
+        return view('notices.create', [
+            'course' => $course,
+            'course_id' => $course_id
+        ]);
     }
 
     /**

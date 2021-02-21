@@ -1,4 +1,4 @@
-{{ $courses }}
+
 @extends('layouts/home')
 @section('search')
     <div class="search-container">

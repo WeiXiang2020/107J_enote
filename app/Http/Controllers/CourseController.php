@@ -18,7 +18,7 @@ class CourseController extends Controller
         $course=Course::find($id);
         $notices=Notice::where('course_id',$id)->get();
 
-        return view('classes.index',['course'=>$course,'notices'=>$notices]);
+
     }
 
     /**

@@ -97,11 +97,17 @@ Route::get('/ta', function () {
             NoticeController::class,'store'
         ]) -> name('notice.store');
 
+    //顯示公告
+        Route::get('{course_id}/notice',[
+            NoticeController::class,'index'
+        ]) -> name('notice.index');
     });
 
-Route::get('test/{test_id}',function ($test_id = 1){
-    return $test_id;
-});
+    Route::get('test',function (){
+        return 1;
+    }) ->name('test');
+
+
 
 
 
