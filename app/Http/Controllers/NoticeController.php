@@ -16,7 +16,7 @@ class NoticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($course_id)
+    public function index(Request $request,$course_id)
     {
         //!!!!!!!!缺身分驗證，確定使用者登入
 
@@ -81,7 +81,10 @@ class NoticeController extends Controller
 
         $notice -> save();
 
-        return back();
+        if ($request -> sub == 'finish'){
+            return redirect() -> route('notice.index',$course_id);
+        }
+//        return back();
 
     }
 

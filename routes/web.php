@@ -98,7 +98,7 @@ Route::get('/ta', function () {
         ]) -> name('notice.store');
 
     //顯示公告
-        Route::get('{course_id}/notice',[
+        Route::match(['get','post'],'{course_id}/notice',[
             NoticeController::class,'index'
         ]) -> name('notice.index');
     });

@@ -43,15 +43,23 @@
             </div>
 
             <div class="text-right">
-                <button type="submit" class="btn btn-success">再新增一筆</button>
+                <button type="submit"
+                        class="btn btn-success"
+                        name="sub"
+                        value="add"
+                >再新增一筆</button>
+            </div>
+
+            <div class="text-right">
+                <button type="submit"
+                        class="btn btn-success"
+                        name="sub"
+                        value="finish"
+                >完成</button>
             </div>
 
         </form>
-        <div class="text-right">
-            <a href="{{route('notice.index',$course_id)}}">
-                <input type="button"  value="完成">
-            </a>
-        </div>
+
 
     </div>
 </div>
