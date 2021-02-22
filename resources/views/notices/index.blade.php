@@ -63,6 +63,19 @@
                                                     {{ csrf_field() }}
                                                     <a class="btn btn-outline-dark btn-sm" href="/notices/{{$notice->id}}" >檢視公告</a>
                                                 </form>
+
+                                                <form action="/notice/{{$notice->id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button class="btn btn-sm btn-danger"
+                                                            type="submit"
+                                                    >
+                                                        刪除
+                                                    </button>
+                                                </form>
+
+
                                             </td>
                                         </tr>
                                     </form>

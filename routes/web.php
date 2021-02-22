@@ -103,6 +103,14 @@ Route::get('/ta', function () {
         ]) -> name('notice.index');
     });
 
+#公告
+    Route::prefix('notice') ->group(function (){
+    //刪除
+        Route::delete('{notice_id}',[
+        NoticeController::class,'destroy'
+        ]) -> name('notice.delete');
+    });
+
     Route::get('test',function (){
         return 1;
     }) ->name('test');

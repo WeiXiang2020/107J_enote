@@ -88,7 +88,7 @@ class NoticeController extends Controller
         if ($request -> sub == 'finish'){
             return redirect() -> route('notice.index',$course_id);
         }
-//        return back();
+        return back();
 
     }
 
@@ -133,8 +133,10 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notice $notice)
+    public function destroy(Notice $notice,$notice_id)
     {
-        //
+        Notice::find($notice_id)->delete();
+
+        return back();
     }
 }
