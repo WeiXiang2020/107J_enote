@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ta;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaController extends Controller
 {
@@ -14,7 +16,10 @@ class TaController extends Controller
      */
     public function index()
     {
-        //
+        return view('ta/index',[
+            'courses' => User::find(Auth::id()) -> teacher()
+                -> first() -> courses() -> get()
+        ]);
     }
 
     /**
