@@ -137,7 +137,7 @@ class NoticeController extends Controller
         $notice ->content = $request -> notice_content;
         $notice -> save();
 
-        return $notice -> title;
+        return redirect()-> route('notice.show',[$course_id,$notice_id]);
     }
 
     /**

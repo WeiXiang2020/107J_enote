@@ -34,9 +34,9 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentCon
 Route::get('/classes/{id}',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
 
 
-//顯示公告資訊
-Route::get('/notices/{id}',[NoticeController::class,'show'])
-    ->name('notices.show')->middleware('auth');
+////顯示公告資訊
+//Route::get('/notices/{id}',[NoticeController::class,'show'])
+//    ->name('notices.show')->middleware('auth');
 
 
 //顯示所有筆記
