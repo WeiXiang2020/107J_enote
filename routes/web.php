@@ -24,6 +24,7 @@ use App\Http\Controllers\TaController;
 |
 */
 
+
 Route::get('/',[UserController::class,'home'])->name('home');
 
 //學生登入後頁面
@@ -31,8 +32,13 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/students',[StudentCon
     ->name('students.index');
 //課程頁面
 Route::get('/classes/{id}',[CourseController::class,'index'])->name('classes.index')->middleware('auth');
+
+
 //顯示公告資訊
-Route::get('/notices/{id}',[NoticeController::class,'show'])->name('notices.show')->middleware('auth');
+Route::get('/notices/{id}',[NoticeController::class,'show'])
+    ->name('notices.show')->middleware('auth');
+
+
 //顯示所有筆記
 Route::get('/mynotes',[NoteController::class,'mynote'])->name('notes.mynotes')->middleware('auth');
 //搜尋筆記
@@ -101,6 +107,11 @@ Route::get('/ta', function () {
         Route::match(['get','post'],'{course_id}/notice',[
             NoticeController::class,'index'
         ]) -> name('notice.index');
+
+    //
+        Route::match(['get','post'],'{course_id}/{notice_id}/show',[
+            NoticeController::class,'show'
+        ])-> name('notice.show');
     });
 
 #公告
@@ -109,6 +120,8 @@ Route::get('/ta', function () {
         Route::delete('{notice_id}',[
         NoticeController::class,'destroy'
         ]) -> name('notice.delete');
+
+
     });
 
     Route::get('test',function (){

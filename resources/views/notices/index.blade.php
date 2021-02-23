@@ -59,10 +59,12 @@
                                                 @endif
                                             </td>
                                             <td width="100" align="center">
-                                                <form action="/notices/{{$notice->id}}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <a class="btn btn-outline-dark btn-sm" href="/notices/{{$notice->id}}" >檢視公告</a>
-                                                </form>
+                                                <input type="button"
+                                                       class="btn btn-outline-dark btn-sm"
+                                                       onclick="location.href = '{{$notice->id}}/show'"
+                                                >
+                                                    檢視公告
+                                                </input>
 
                                                 <form action="/notice/{{$notice->id}}" method="POST">
                                                     @csrf

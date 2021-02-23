@@ -98,9 +98,10 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$notice_id)
     {
-        $notice=Notice::find($id);
+        $notice=Notice::find($notice_id);
+
         return view('notices.show',['notice'=>$notice]);
     }
 
