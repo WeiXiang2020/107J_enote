@@ -112,11 +112,14 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notice $notice,$notice_id)
+    public function edit($course_id,$notice_id)
     {
         $notice = Notice::find($notice_id);
-
-        return view ('notices.edit')  ;
+        $course = Course::find($course_id);
+        return view ('notices.edit',[
+            'notice' => $notice,
+            'course' => $course
+        ])  ;
     }
 
     /**

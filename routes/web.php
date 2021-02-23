@@ -109,7 +109,7 @@ Route::get('/ta', function () {
         ]) -> name('notice.index');
 
     //檢視公告
-        Route::match(['get','post'],'{course_id}/{notice_id}',[
+        Route::get('{course_id}/{notice_id}',[
             NoticeController::class,'show'
         ])-> name('notice.show');
 
@@ -117,7 +117,14 @@ Route::get('/ta', function () {
         Route::get('{course_id}/{notice_id}/edit',[
             NoticeController::class,'edit'
         ])->name('notice.edit');
+
+    //更新公告
+        Route::patch('{course_id}/{notice_id}',[
+            NoticeController::class,'update'
+        ])-> name('notice.update');
     });
+
+
 
 #公告
     Route::prefix('notice') ->group(function (){
