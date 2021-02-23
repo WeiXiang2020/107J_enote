@@ -129,9 +129,15 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Notice $notice)
+    public function update(Request $request, $course_id, $notice_id)
     {
-        //
+        $notice = Notice::find($notice_id);
+
+        $notice ->title = $request -> notice_title;
+        $notice ->content = $request -> notice_content;
+        $notice -> save();
+
+        return $notice -> title;
     }
 
     /**

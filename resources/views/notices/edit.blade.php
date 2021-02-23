@@ -21,7 +21,7 @@
                 </label>
 
                 <input id="title"
-                       name = "title"
+                       name = "notice_title"
                        class= "form control"
                        value="{{$notice -> title}}"
                 >
