@@ -90,14 +90,14 @@ Route::get('/ta', function () {
         ])  -> name('teacher.index');
 
     //課程
-        Route::get('{course_id}',[
+        Route::get('{course_id}/index',[
             TeacherController::class,'course'
         ])  ->name('teacher.course');
 
     //新增公告
         Route::get('{course_id}/notice/create',[
             NoticeController::class,'create'
-        ]) -> name('teacher.notice.create');
+        ]) -> name('notice.create');
 
     //儲存公告
         Route::post('{course_id}/notice/store',[

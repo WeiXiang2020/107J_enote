@@ -1,30 +1,13 @@
 @extends('layouts/textbook')
 
-@section('courses')
-    @if ($courses -> count() > 0)
-        @foreach( $courses as $course)
-            <a class="collapse-item" href="/teacher/{{ $course->id }}"
-            >
-                {{$course -> name}}
-            </a>
-        @endforeach
-    @endif
-@endsection
-
 @section('site')
 
-    <b>課程: {{$selected -> name}}</b>
-    <input type="button"
-           onclick="location.href = '{{$selected -> id}}/notice/create'"
-           value="新增公告"
-    />
-    <input type="button"
-           onclick="location.href = '{{$selected -> id}}/students'"
-           value="修課學生"
-    />
+
 @endsection
 
 @section('notice')
+    <b>課程: {{$selected -> name}}</b>
+
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
@@ -62,11 +45,11 @@
                                             <td width="100" align="center">
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$selected -> id}}/{{$notice->id}}'"
+                                                       onclick="location.href = '{{$notice->id}}'"
                                                        value="檢視公告"
                                                 />
 
-                                                <form action="{{$course -> id}}/{{$notice -> id}}"
+                                                <form action="{{$selected -> id}}/{{$notice -> id}}"
                                                       method="post"
                                                 >
                                                     @csrf

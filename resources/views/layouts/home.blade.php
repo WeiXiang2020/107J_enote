@@ -174,8 +174,19 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">已選課程:</h6>
+                            @php
+                            $courses = \App\Models\User::find(\Illuminate\Support\Facades\Auth::id())
+                                -> teacher() -> first() -> courses() -> get();
+                            @endphp
 
-                            @yield('courses')
+                            @if ($courses -> count() > 0)
+                                @foreach( $courses as $course)
+                                    <a class="collapse-item" href="/teacher/{{ $course->id }}/index"
+                                    >
+                                        {{$course -> name}}
+                                    </a>
+                                @endforeach
+                            @endif
 
                         </div>
                     </div>
@@ -251,7 +262,22 @@
 
                 <!-- Topbar Search -->
                 @yield('search')
+
+                {{--                顯示狀態--}}
                 @yield('site')
+
+                <div class="search-container">
+                    <input type="button"
+                           onclick="location.href = 'notice/create'"
+                           value="新增公告"
+                    />
+                    <input type="button"
+                           onclick="location.href = 'students'"
+                           value="修課學生"
+                    />
+                </div>
+                {{--                顯示狀態--}}
+
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <style>
                     * {box-sizing: border-box;}

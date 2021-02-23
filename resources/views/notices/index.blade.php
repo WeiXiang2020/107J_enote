@@ -1,27 +1,12 @@
 @extends('layouts/textbook')
 
-@section('courses')
-    @if ($courses -> count() > 0)
-        @foreach( $courses as $course)
-            <a class="collapse-item" href="/teacher/{{ $course->id }}"
-            >
-                {{$course -> name}}
-            </a>
-        @endforeach
-    @endif
-@endsection
-
 @section('site')
-
-    <b>課程: {{$selected -> name}}</b>
-    <input type="button"
-           onclick="location.href = 'notice/create'"
-           value="新增公告"
-    />
 
 @endsection
 
 @section('notice')
+
+    <b>課程: {{$selected -> name}}</b>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">

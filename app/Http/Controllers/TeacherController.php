@@ -20,9 +20,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $courses = Teacher::where(
-            'user_id',Auth::user()->id
-        )-> first() ->courses() -> get();
+        $courses = User::find(\Illuminate\Support\Facades\Auth::id())
+        -> teacher() -> first() -> courses() -> get();
 
         return view('teacher.index',
             ['courses' => $courses]
@@ -32,20 +31,12 @@ class TeacherController extends Controller
     public function course(Request $request,$course_id){
 
         $selected = Course::find($course_id);
+        $notices = $selected -> notices() -> get();
 
-        $notices = Course::find($course_id)->notices()->get();
-
-        $courses = User::find(Auth::id())
-            ->teacher() -> first()
-            -> courses() ->get() ;
-
-//        return $courses;
 
         return view ('teacher.course',[
                 'selected' => $selected ,
-                'courses' => $courses ,
                 'notices' => $notices
-
         ]);
 
     }
