@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Matcher\Not;
 
 class NoticeController extends Controller
 {
@@ -111,9 +112,11 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notice $notice)
+    public function edit(Notice $notice,$notice_id)
     {
-        //
+        $notice = Notice::find($notice_id);
+
+        return view ('notices.edit')  ;
     }
 
     /**

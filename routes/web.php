@@ -108,10 +108,15 @@ Route::get('/ta', function () {
             NoticeController::class,'index'
         ]) -> name('notice.index');
 
-    //
+    //檢視公告
         Route::match(['get','post'],'{course_id}/{notice_id}',[
             NoticeController::class,'show'
         ])-> name('notice.show');
+
+    //編輯公告
+        Route::get('{course_id}/{notice_id}/edit',[
+            NoticeController::class,'edit'
+        ])->name('notice.edit');
     });
 
 #公告
