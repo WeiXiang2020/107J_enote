@@ -104,11 +104,10 @@ Route::get('/ta', function () {
             NoticeController::class,'store'
         ]) -> name('notice.store');
 
-    //顯示公告
+    //顯示所有公告
         Route::match(['get','post'],'{course_id}/notice',[
             NoticeController::class,'index'
         ]) -> name('notice.index');
-<<<<<<< HEAD
 
     //檢視公告
         Route::get('{course_id}/{notice_id}',[
@@ -120,26 +119,27 @@ Route::get('/ta', function () {
             NoticeController::class,'edit'
         ])->name('notice.edit');
 
+    //刪除公告
+        Route::delete('{course_id}/{notice_id}',[
+            NoticeController::class,'destroy'
+        ]) -> name('notice.delete');
+
     //更新公告
         Route::patch('{course_id}/{notice_id}',[
             NoticeController::class,'update'
         ])-> name('notice.update');
-=======
+
     //修課學生
         Route::get('{course_id}/students/',[
             TeacherController::class,'student'
         ])->name('teacher.student');
->>>>>>> f4cfdc74a0e16a322532844905964e3b96afc80a
     });
 
 
 
 #公告
     Route::prefix('notice') ->group(function (){
-    //刪除
-        Route::delete('{notice_id}',[
-        NoticeController::class,'destroy'
-        ]) -> name('notice.delete');
+
 
 
     });

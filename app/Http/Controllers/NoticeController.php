@@ -146,7 +146,7 @@ class NoticeController extends Controller
      * @param  \App\Models\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notice $notice,$notice_id)
+    public function destroy(Notice $notice,$course_id,$notice_id)
     {
         Notice::find($notice_id)->delete();
 

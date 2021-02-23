@@ -35,6 +35,8 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+
+
                             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
@@ -45,11 +47,7 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach ($notices as $notice)
-                                    <form  method="POST" role="form" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        {{ method_field('POST') }}
-
+                                    @foreach ($notices as $notice)
                                         <tr>
                                             <td >
                                                 {{$notice -> title}}
@@ -64,13 +62,15 @@
                                             <td width="100" align="center">
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$notice->id}}'"
+                                                       onclick="location.href = '{{$selected -> id}}/{{$notice->id}}'"
                                                        value="檢視公告"
                                                 />
-                                                <form action="/notice/{{$notice->id}}" method="POST">
+
+                                                <form action="{{$course -> id}}/{{$notice -> id}}"
+                                                      method="post"
+                                                >
                                                     @csrf
                                                     @method('DELETE')
-
                                                     <button class="btn btn-sm btn-danger"
                                                             type="submit"
                                                     >
@@ -79,10 +79,13 @@
                                                 </form>
                                             </td>
                                         </tr>
-                                    </form>
-                                @endforeach
+
+                                    @endforeach
+
                                 </tbody>
                             </table>
+
+
                         </div>
                     </div>
                 </div>

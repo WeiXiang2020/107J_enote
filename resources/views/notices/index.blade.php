@@ -43,10 +43,6 @@
                                 <tbody>
 
                                 @foreach ($notices as $notice)
-                                    <form  method="POST" role="form" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        {{ method_field('POST') }}
-
                                         <tr>
                                             <td >
                                                 {{$notice -> title}}
@@ -64,7 +60,7 @@
                                                        onclick="location.href = '{{$notice->id}}'"
                                                        value="檢視公告"
                                                 />
-                                                <form action="/notice/{{$notice->id}}" method="POST">
+                                                <form action="{{$notice->id}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -80,8 +76,11 @@
                                         </tr>
                                     </form>
                                 @endforeach
+
                                 </tbody>
                             </table>
+
+
                         </div>
                     </div>
                 </div>
