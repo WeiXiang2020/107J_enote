@@ -36,7 +36,7 @@
                                         </td>
                                         <td >{{--查詢TA--}}
 
-                                            @if ($course -> ta() -> first() != "" )
+                                            @if ($course -> ta() -> first() != null )
                                                 have
                                             @else
                                                 null
@@ -44,11 +44,22 @@
                                         </td>
 
                                         <td width="100" align="center">
-                                            <input type="button"
-                                                   class="btn btn-outline-dark btn-sm"
-                                                   onclick="location.href = '{{$course->id}}'"
-                                                   value="檢視公告"
-                                            />
+{{--                                            若有TA可以變更TA--}}
+                                            @if ($course -> ta() -> first() != null )
+                                                <input type="button"
+                                                       class="btn btn-outline-dark btn-sm"
+                                                       onclick="location.href = '{{$course->id}}/edit'"
+                                                       value="更改TA"
+                                                />
+                                            @else
+                                                {{-- 若尚未有則設定TA--}}
+
+                                                <input type="button"
+                                                       class="btn btn-outline-dark btn-sm"
+                                                       onclick="location.href = '{{$course->id}}/create'"
+                                                       value="設定TA"
+                                                />
+                                            @endif
 
                                         </td>
                                     </tr>

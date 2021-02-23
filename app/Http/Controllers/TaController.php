@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Ta;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,9 +28,11 @@ class TaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+//        顯示所有的班級學生
+        $students = Course::find($id) -> students() -> get();
+
     }
 
     /**
@@ -60,9 +63,9 @@ class TaController extends Controller
      * @param  \App\Models\Ta  $ta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ta $ta)
+    public function edit($id)
     {
-        //
+        $
     }
 
     /**

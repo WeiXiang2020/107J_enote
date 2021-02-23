@@ -136,9 +136,15 @@ Route::get('/ta', function () {
     });
 
 #TA
+    //index
     Route::get('teacher/TA/',[
         TaController::class,'index'
     ])-> name('TA.index');
+
+    //create
+    Route::get('teacher/{$course_id}/create',[
+        TaController::class,'create'
+    ])->name('TA.create');
 
 
 
