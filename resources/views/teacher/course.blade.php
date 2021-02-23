@@ -18,7 +18,10 @@
            onclick="location.href = '{{$selected -> id}}/notice/create'"
            value="新增公告"
     />
-
+    <input type="button"
+           onclick="location.href = '{{$selected -> id}}/students'"
+           value="修課學生"
+    />
 @endsection
 
 @section('notice')

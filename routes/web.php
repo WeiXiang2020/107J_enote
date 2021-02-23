@@ -13,6 +13,7 @@ use App\Http\Controllers\TextbookController;
 
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TaController;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,6 +108,7 @@ Route::get('/ta', function () {
         Route::match(['get','post'],'{course_id}/notice',[
             NoticeController::class,'index'
         ]) -> name('notice.index');
+<<<<<<< HEAD
 
     //檢視公告
         Route::get('{course_id}/{notice_id}',[
@@ -122,6 +124,12 @@ Route::get('/ta', function () {
         Route::patch('{course_id}/{notice_id}',[
             NoticeController::class,'update'
         ])-> name('notice.update');
+=======
+    //修課學生
+        Route::get('{course_id}/students/',[
+            TeacherController::class,'student'
+        ])->name('teacher.student');
+>>>>>>> f4cfdc74a0e16a322532844905964e3b96afc80a
     });
 
 
@@ -139,7 +147,16 @@ Route::get('/ta', function () {
     Route::get('test',function (){
         return 1;
     }) ->name('test');
+    Route::get('users/import',function()
+    {   $user=new User();
+        $user->account="sean";
+        $user->name="seanpu";
+        $user->password=\Illuminate\Support\Facades\Hash::make("1234");
+        $user->type="學生";
+        $user->save();
 
+
+    });
 
 
 

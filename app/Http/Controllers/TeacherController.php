@@ -115,4 +115,16 @@ class TeacherController extends Controller
     {
         //
     }
+    public function student($course_id){
+
+        $courses = User::find(Auth::id()) -> teacher() -> first() -> courses() ->get();
+
+        $selected = Course::find($course_id);
+
+        $students = Course::find($course_id) -> students() -> get();
+
+        return $students;
+
+//        return view('teacher.student');
+    }
 }
