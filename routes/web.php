@@ -135,6 +135,11 @@ Route::get('/ta', function () {
         ])->name('teacher.student');
     });
 
+#TA
+    Route::get('teacher/TA/',[
+        TaController::class,'index'
+    ])-> name('TA.index');
+
 
 
 #公告

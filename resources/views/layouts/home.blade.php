@@ -96,7 +96,10 @@
                     @endphp
                     @if ($courses -> count() > 0)
                         @foreach($courses as $course)
-                            <a class="collapse-item" href="/classes/{{ $course->id }}" >{{$course -> name}}</a>
+                            <a class="collapse-item" href="{{route('classes.course',$course -> id)}}"
+                            >
+                                {{$course -> name}}
+                            </a>
                         @endforeach
                     @endif
 
@@ -132,7 +135,7 @@
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="TA/index">
                 <i class="fas fa-fw fa-comment"></i>
                 <span>與Ta聯繫</span></a>
         </li>
@@ -181,7 +184,7 @@
 
                             @if ($courses -> count() > 0)
                                 @foreach( $courses as $course)
-                                    <a class="collapse-item" href="/teacher/{{ $course->id }}/index"
+                                    <a class="collapse-item" href="{{route('teacher.course',$course -> id)}}"
                                     >
                                         {{$course -> name}}
                                     </a>
@@ -236,9 +239,11 @@
                 </div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-fw fa-comment"></i>
-                        <span>與Ta聯繫</span></a>
+                    <form action="teacher/TA/index">
+                        <a class="nav-link" href="{{route('TA.index')}}">
+                            <i class="fas fa-fw fa-comment"></i>
+                            <span>與Ta聯繫</span></a>
+                    </form>
                 </li>
             </ul>
     @endif
