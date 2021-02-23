@@ -109,7 +109,7 @@ Route::get('/ta', function () {
         ]) -> name('notice.index');
 
     //
-        Route::match(['get','post'],'{course_id}/{notice_id}/show',[
+        Route::match(['get','post'],'{course_id}/{notice_id}',[
             NoticeController::class,'show'
         ])-> name('notice.show');
     });

@@ -61,11 +61,9 @@
                                             <td width="100" align="center">
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$notice->id}}/show'"
-                                                >
-                                                    檢視公告
-                                                </input>
-
+                                                       onclick="location.href = '{{$notice->id}}'"
+                                                       value="檢視公告"
+                                                />
                                                 <form action="/notice/{{$notice->id}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')

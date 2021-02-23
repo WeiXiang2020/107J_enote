@@ -15,8 +15,10 @@
         <main>
             <div class="container-fluid">
                 <h2 class="mt-4">{{$notice -> name}}
-                    <a class="btn btn-outline-dark btn-sm" style="margin-left:738px; width:200px; height:30px;"
-                       href="/{{$notice->course_id}}" >返回公告列表</a>
+                    <input type="button" value="返回公告列表"
+                           onclick="location.href = 'notice'"
+                           class="btn btn-outline-dark btn-sm"
+                    />
                 </h2>
                 <div class="card mb-4">
                     <div class="card-header">
