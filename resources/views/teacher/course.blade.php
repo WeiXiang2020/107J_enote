@@ -59,9 +59,20 @@
                                                 @endif
                                             </td>
                                             <td width="100" align="center">
-                                                <form action="/notices/{{$notice->id}}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <a class="btn btn-outline-dark btn-sm" href="/notices/{{$notice->id}}" >檢視公告</a>
+                                                <input type="button"
+                                                       class="btn btn-outline-dark btn-sm"
+                                                       onclick="location.href = '{{$notice->id}}'"
+                                                       value="檢視公告"
+                                                />
+                                                <form action="/notice/{{$notice->id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button class="btn btn-sm btn-danger"
+                                                            type="submit"
+                                                    >
+                                                        刪除
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
