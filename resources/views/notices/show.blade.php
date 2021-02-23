@@ -19,6 +19,13 @@
                            onclick="location.href = 'notice'"
                            class="btn btn-outline-dark btn-sm"
                     />
+                    @if(\App\Models\User::find(\Illuminate\Support\Facades\Auth::id())-> type== '老師')
+                    <input type="button" value="編輯公告"
+                           onclick="location.href = '{{$notice -> id }}/edit'"
+                           class="btn btn-outline-dark btn-sm"
+                    />
+                    @endif
+
                 </h2>
                 <div class="card mb-4">
                     <div class="card-header">
