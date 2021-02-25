@@ -34,9 +34,9 @@
                                         <td >
                                             {{$course -> name}}
                                         </td>
-                                        <td >{{--查詢TA--}}
 
-                                            @if ($course -> ta() -> first() != null )
+                                        <td >{{--查詢TA--}}
+                                            @if ($course -> ta() -> get() -> count() != 0 )
                                                 have
                                             @else
                                                 null

@@ -15,10 +15,12 @@ class CreateTasTable extends Migration
     {
         Schema::create('tas', function (Blueprint $table) {
             $table->increments('id');
+
             $table->unsignedInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
