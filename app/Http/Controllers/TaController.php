@@ -65,9 +65,13 @@ class TaController extends Controller
      * @param  \App\Models\Ta  $ta
      * @return \Illuminate\Http\Response
      */
-    public function show(Ta $ta)
+    public function show(Ta $ta,$course_id,$id)
     {
-        //
+        $student = Student::find($id);
+
+        return view ('TA.show',[
+            'student' => $student
+        ]);
     }
 
     /**

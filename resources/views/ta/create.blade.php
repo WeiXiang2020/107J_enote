@@ -49,11 +49,6 @@
                                         </td>
 
                                         <td width="100" align="center">{{--設定檢視與設定button --}}
-                                                <input type="button"
-                                                       class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$student -> id}}/show'"
-                                                       value="檢視學生資料"
-                                                />
                                                     {{--直接設定的button--}}
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
