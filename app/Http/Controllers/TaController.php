@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\Ta;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,9 +48,15 @@ class TaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$course_id,$student_id)
     {
+        $TA = new Ta();
 
+        $TA -> course_id = $course_id;
+        $TA -> student_id = $student_id;
+        $TA -> save();
+
+        return redirect() -> route('TA.index');
     }
 
     /**
