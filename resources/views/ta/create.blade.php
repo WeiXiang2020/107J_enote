@@ -33,10 +33,19 @@
 
                                 @foreach ($students as $student)
                                     <tr>
+
+                                        <td>{{--姓名--}}
+                                            {{\App\Models\User::find($student -> user_id) -> name }}
+                                        </td>
+
+                                        <td>{{--學號--}}
+                                            {{$student -> id}}
+                                        </td>
                                         <td >{{--科系名稱--}}
                                             {{$student -> department() -> first() -> name}}
                                         </td>
                                         <td >{{--班級--}}
+                                            {{$student -> classroom}}
                                         </td>
 
                                         <td width="100" align="center">{{--設定檢視與設定button --}}
