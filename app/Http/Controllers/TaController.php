@@ -33,7 +33,11 @@ class TaController extends Controller
 //        顯示所有的該系所的學生
         $students = Course::find($id) -> department() -> first()-> students() -> get();
 
-        return $students;
+//            return $students -> first() -> department()
+
+        return view ('TA.create',[
+            'students' => $students,
+        ]);
 
     }
 

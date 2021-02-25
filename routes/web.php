@@ -14,6 +14,7 @@ use App\Http\Controllers\TextbookController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TaController;
 use App\Models\User;
+use App\Models\Student;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -153,12 +154,22 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
     }) ->name('test');
 
     Route::get('users/import',function()
-    {   $user=new User();
-        $user->account="sean";
-        $user->name="seanpu";
-        $user->password=\Illuminate\Support\Facades\Hash::make("1234");
-        $user->type="學生";
-        $user->save();
+    {
+        for ($i = 0 ; $i < 10 ; $i ++){
+            $user=new User();
+            $user->account="student" . $i;
+            $user->name="student_name" . $i;
+            $user->password=\Illuminate\Support\Facades\Hash::make("1234");
+            $user->type="學生";
+            $user->save();
+
+            $student = new Student();
+            $student -> user_id = $user -> id;
+            $student -> department_id = 9;
+            $student -> classroom = '四資三乙';
+            $student -> save();
+        }
+
     });
 
 
