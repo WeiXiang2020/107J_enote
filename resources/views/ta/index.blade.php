@@ -48,7 +48,7 @@
                                             @if ($course -> ta() -> first() != null )
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$course->id}}/edit'"
+                                                       onclick="location.href = '{{$course->id}}/TA/edit'"
                                                        value="更改TA"
                                                 />
                                             @else
@@ -56,7 +56,7 @@
 
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = '{{$course->id}}/create'"
+                                                       onclick="location.href = '{{$course->id}}/create/'"
                                                        value="設定TA"
                                                 />
                                             @endif

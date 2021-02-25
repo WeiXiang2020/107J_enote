@@ -96,7 +96,7 @@
                     @endphp
                     @if ($courses -> count() > 0)
                         @foreach($courses as $course)
-                            <a class="collapse-item" href="{{route('classes.course',$course -> id)}}"
+                            <a class="collapse-item" href="{{route('classes/course',$course -> id)}}"
                             >
                                 {{$course -> name}}
                             </a>
@@ -135,7 +135,7 @@
         </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="TA/index">
+            <a class="nav-link" href="{{route('teacher.ta')}}">
                 <i class="fas fa-fw fa-comment"></i>
                 <span>與Ta聯繫</span></a>
         </li>
@@ -270,18 +270,8 @@
 
                 {{--                顯示狀態--}}
                 @yield('site')
-
-                <div class="search-container">
-                    <input type="button"
-                           onclick="location.href = 'notice/create'"
-                           value="新增公告"
-                    />
-                    <input type="button"
-                           onclick="location.href = 'students'"
-                           value="修課學生"
-                    />
-                </div>
                 {{--                顯示狀態--}}
+
 
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <style>

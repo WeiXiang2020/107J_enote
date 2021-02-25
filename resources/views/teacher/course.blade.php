@@ -1,8 +1,16 @@
 @extends('layouts/textbook')
 
 @section('site')
-
-
+    <div class="search-container">
+        <input type="button"
+               onclick="location.href = '{{route('notice.create',$selected -> id)}}'"
+               value="新增公告"
+        />
+        <input type="button"
+               onclick="location.href = 'students'"
+               value="修課學生"
+        />
+    </div>
 @endsection
 
 @section('notice')

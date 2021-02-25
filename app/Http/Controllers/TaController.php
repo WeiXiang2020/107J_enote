@@ -30,8 +30,10 @@ class TaController extends Controller
      */
     public function create($id)
     {
-//        顯示所有的班級學生
-        $students = Course::find($id) -> students() -> get();
+//        顯示所有的該系所的學生
+        $students = Course::find($id) -> department() -> first()-> students() -> get();
+
+        return $students;
 
     }
 
@@ -65,7 +67,7 @@ class TaController extends Controller
      */
     public function edit($id)
     {
-        $
+
     }
 
     /**

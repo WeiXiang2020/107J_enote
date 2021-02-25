@@ -20,7 +20,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $courses = User::find(\Illuminate\Support\Facades\Auth::id())
+        $courses = User::find(Auth::id())
         -> teacher() -> first() -> courses() -> get();
 
         return view('teacher.index',

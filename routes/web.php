@@ -74,13 +74,6 @@ Route::post('/comments',[CommentController::class,'store'])->name('comments.stor
 //筆記評分
 Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
 
-
-//ta首頁
-Route::get('/ta', function () {
-    return view('ta.index');
-});
-
-
 #教授
     Route::prefix('teacher')->group(function (){
 
@@ -94,41 +87,6 @@ Route::get('/ta', function () {
             TeacherController::class,'course'
         ])  ->name('teacher.course');
 
-    //新增公告
-        Route::get('{course_id}/notice/create',[
-            NoticeController::class,'create'
-        ]) -> name('notice.create');
-
-    //儲存公告
-        Route::post('{course_id}/notice/store',[
-            NoticeController::class,'store'
-        ]) -> name('notice.store');
-
-    //顯示所有公告
-        Route::match(['get','post'],'{course_id}/notice',[
-            NoticeController::class,'index'
-        ]) -> name('notice.index');
-
-    //檢視公告
-        Route::get('{course_id}/{notice_id}',[
-            NoticeController::class,'show'
-        ])-> name('notice.show');
-
-    //編輯公告
-        Route::get('{course_id}/{notice_id}/edit',[
-            NoticeController::class,'edit'
-        ])->name('notice.edit');
-
-    //刪除公告
-        Route::delete('{course_id}/{notice_id}',[
-            NoticeController::class,'destroy'
-        ]) -> name('notice.delete');
-
-    //更新公告
-        Route::patch('{course_id}/{notice_id}',[
-            NoticeController::class,'update'
-        ])-> name('notice.update');
-
     //修課學生
         Route::get('{course_id}/students/',[
             TeacherController::class,'student'
@@ -136,28 +94,64 @@ Route::get('/ta', function () {
     });
 
 #TA
-    //index
-    Route::get('teacher/TA/',[
-        TaController::class,'index'
-    ])-> name('TA.index');
+    Route::prefix('TA')-> group(function (){
 
-    //create
-    Route::get('teacher/{$course_id}/create',[
-        TaController::class,'create'
-    ])->name('TA.create');
+        //index
+        Route::get('index',[
+            TaController::class,'index'
+        ])-> name('TA.index');
 
-
+        //create
+        Route::get('{course_id}/create',[
+            TaController::class,'create'
+        ]) -> name('TA.create');
+    });
 
 #公告
     Route::prefix('notice') ->group(function (){
+    //新增公告
+        Route::get('{course_id}/create',[
+            NoticeController::class,'create'
+        ]) -> name('notice.create');
 
+    //儲存公告
+        Route::post('{course_id}/store',[
+            NoticeController::class,'store'
+        ]) -> name('notice.store');
 
+    //顯示所有公告
+        Route::match(['get','post'],'{course_id}',[
+            NoticeController::class,'index'
+        ]) -> name('notice.index');
+
+        //檢視公告
+        Route::get('{course_id}/{notice_id}',[
+            NoticeController::class,'show'
+        ])-> name('notice.show');
+
+        //編輯公告
+        Route::get('{course_id}/{notice_id}/edit',[
+            NoticeController::class,'edit'
+        ])->name('notice.edit');
+
+        //刪除公告
+        Route::delete('{course_id}/{notice_id}',[
+            NoticeController::class,'destroy'
+        ]) -> name('notice.delete');
+
+        //更新公告
+        Route::patch('{course_id}/{notice_id}',[
+            NoticeController::class,'update'
+        ])-> name('notice.update');
 
     });
 
+
+//    --------------------------------------------
     Route::get('test',function (){
         return 1;
     }) ->name('test');
+
     Route::get('users/import',function()
     {   $user=new User();
         $user->account="sean";
@@ -165,8 +159,6 @@ Route::get('/ta', function () {
         $user->password=\Illuminate\Support\Facades\Hash::make("1234");
         $user->type="學生";
         $user->save();
-
-
     });
 
 
