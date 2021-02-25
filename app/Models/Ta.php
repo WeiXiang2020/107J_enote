@@ -18,14 +18,14 @@ class Ta extends Model
         return $this->belongsTo(Student::class);
     }
 
-    public function notices()
-    {
-        return $this->hasMany(Notice::class);
-    }
-
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
     }
 
     public function questions()

@@ -12,10 +12,4 @@ class CourseStudent extends Model
         'student_id',
         'course_id',
     ];
-
-    public function ta()
-    {
-        return $this->hasMany(Course::class);
-    }
-
 }
