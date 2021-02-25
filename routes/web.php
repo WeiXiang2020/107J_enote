@@ -106,6 +106,11 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
         Route::get('{course_id}/create',[
             TaController::class,'create'
         ]) -> name('TA.create');
+
+        //儲存TA
+        Route::get('{course_id}/{student_id}/store',[
+            TaController::class,'store'
+        ])-> name('TA.store');
     });
 
 #公告

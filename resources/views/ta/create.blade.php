@@ -57,7 +57,7 @@
                                                     {{--直接設定的button--}}
                                                 <input type="button"
                                                        class="btn btn-outline-dark btn-sm"
-                                                       onclick="location.href = 'store'"
+                                                       onclick="location.href = '{{$student -> id}}/store'"
                                                        value="設定為TA"
                                                 />
                                         </td>
