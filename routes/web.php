@@ -97,20 +97,25 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
 #TA
     Route::prefix('TA')-> group(function (){
 
-        //index
+    //index
         Route::get('index',[
             TaController::class,'index'
         ])-> name('TA.index');
 
-        //create
+    //create
         Route::get('{course_id}/create',[
             TaController::class,'create'
         ]) -> name('TA.create');
 
-        //儲存TA
+    //儲存TA
         Route::get('{course_id}/{student_id}/store',[
             TaController::class,'store'
         ])-> name('TA.store');
+
+    //顯示學生的資料
+        Route::get('{course_id}/{student_id}/show',[
+            TaController::class,'show'
+        ]) -> name('TA.show');
     });
 
 #公告
