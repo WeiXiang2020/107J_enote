@@ -487,7 +487,6 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 @yield('notice')
-
             </div>
             <!-- End of Main Content -->
 

@@ -222,12 +222,13 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
                 $course =new \App\Models\Course();
 
                 $course -> teacher_id = 1;
-                $course -> department_id = 1;
+                $course -> department_id = 3;
                 $course -> name = 'course'. $i;
                 $course -> grade = 2 ;
                 $course -> classroom = 503;
                 $course -> year = 110 ;
                 $course -> semester = 1;
+                $course -> save();
 
             }
 
