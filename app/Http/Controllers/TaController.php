@@ -114,6 +114,6 @@ class TaController extends Controller
 
     public function message($student_id){
 
-        
+
     }
 }
