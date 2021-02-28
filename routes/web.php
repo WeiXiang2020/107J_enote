@@ -124,6 +124,11 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
             TaController::class,'message'
         ])->name('TA.message');
 
+    //儲存訊息
+        Route::post('{student_id}/message',[
+            TaController::class,'message_store'
+        ])->name('TA.message_store');
+
 
     });
 

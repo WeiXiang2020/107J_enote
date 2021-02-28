@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\message;
 use App\Models\Student;
 use App\Models\Ta;
 use App\Models\User;
@@ -114,6 +115,24 @@ class TaController extends Controller
 
     public function message($student_id){
 
+        $messages = Student::find($student_id) -> messages() -> get();
 
+        return view('ta.message',[
+            'messages' => $messages
+        ]);
+    }
+
+    public function message_store(Request $request,$student_id){
+        if ($request -> message != null){
+            $message = new message();
+
+            $message -> teacher_id = User::find(Auth::id()) -> teacher() -> first() -> id;
+            $message -> student_id = $student_id;
+            $message -> content = $request -> message;
+
+            $message -> save();
+        }
+
+        return back();
     }
 }
