@@ -18,6 +18,20 @@
                     <div class="card-body">
                         <div class="table-responsive">
 
+                            <select>
+                                <option>選擇系所(#####)</option>
+
+                                @php
+                                    $departments = \App\Models\Department::all();
+
+
+                                @endphp
+                                @foreach($departments as $department )
+
+                                    <option>{{$department -> name}}</option>
+                                @endforeach
+
+                            </select>
 
                             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
