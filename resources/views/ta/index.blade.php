@@ -51,6 +51,11 @@
                                                        onclick="location.href = '{{$course->id}}/TA/edit'"
                                                        value="更改TA"
                                                 />
+                                                <input type="button"
+                                                       class="btn btn-outline-dark btn-sm"
+                                                       onclick="location.href = '{{$course -> ta() -> first() ->student_id}}/message/'"
+                                                       value="訊息"
+                                                />
                                             @else
                                                 {{-- 若尚未有則設定TA--}}
 
@@ -60,6 +65,7 @@
                                                        value="設定TA"
                                                 />
                                             @endif
+
 
                                         </td>
                                     </tr>

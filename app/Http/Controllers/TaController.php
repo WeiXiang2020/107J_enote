@@ -108,4 +108,12 @@ class TaController extends Controller
     {
         //
     }
+
+
+//    ---------own create --------------//
+
+    public function message($student_id){
+
+        
+    }
 }
