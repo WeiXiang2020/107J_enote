@@ -37,4 +37,8 @@ class Student extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function messages(){
+        return $this -> hasMany(Message::class);
+    }
 }
