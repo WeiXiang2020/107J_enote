@@ -37,7 +37,7 @@
 
                                         <td >{{--查詢TA--}}
                                             @if ($course -> ta() -> get() -> count() != 0 )
-                                                have
+                                               {{ $course -> ta() -> first() -> student() -> first() -> user() ->first()-> name}};
                                             @else
                                                 null
                                             @endif

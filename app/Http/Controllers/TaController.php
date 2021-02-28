@@ -19,6 +19,7 @@ class TaController extends Controller
     public function index()
     {
         return view('ta/index',[
+            //現在使用者的所有課堂
             'courses' => User::find(Auth::id()) -> teacher()
                 -> first() -> courses() -> get()
         ]);
