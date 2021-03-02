@@ -1,18 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\CollectNoteController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NoteScoreController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\TextbookController;
-
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TaController;
+use App\Http\Controllers\AdminController;
+
 use App\Models\User;
 use App\Models\Student;
 /*
@@ -153,7 +155,21 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
     });
 
 
-//    --------------------------------------------
+#管理者
+    Route::prefix('admin')->group(function (){
+    //主頁面
+        Route::get('index',[
+            AdminController::class,'index'
+        ])->name('admin.index');
+
+    });
+
+
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------　　　　　　
+
+
+
     Route::get('test',function (){
         return 1;
     }) ->name('test');
