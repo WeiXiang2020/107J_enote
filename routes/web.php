@@ -162,6 +162,11 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
             AdminController::class,'index'
         ])->name('admin.index');
 
+    //使用者匯入
+        Route::post('import',[
+            AdminController::class,'import'
+        ])->name('admin.import');
+
     });
 
 

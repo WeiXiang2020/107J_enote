@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UsersImport;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
 
 class AdminController extends Controller
 {
@@ -15,6 +17,12 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index');
+    }
+
+    public function import(){
+        Excel::import(new UsersImport(),'users.xlsx');
+
+        return back();
     }
 
     /**
