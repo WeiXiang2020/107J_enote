@@ -143,19 +143,25 @@ class TaController extends Controller
         ]);
     }
 
-    public function message_store(Request $request,$student_id){
+    public function message_store(Request $request,$type_id){
 
 //        判斷訊息是否為空值
         if ($request -> message != null){
             $message = new message();
 
-            $message -> teacher_id = User::find(Auth::id()) -> teacher() -> first() -> id;
-            $message -> student_id = $student_id;
-            $message -> content = $request -> message;
-
-            $message -> save();
+            if(Auth::user() -> type == "老師"){
+                $message -> teacher_id = User::find(Auth::id()) -> teacher() -> first() -> id;
+                $message -> student_id = $type_id;
+                $message -> content = $request -> message;
+                $message -> sender = "老師";
+            }else{
+                $message -> teacher_id = $type_id;
+                $message -> student_id = User::find(Auth::id()) -> student() -> first() -> id;
+                $message -> content = $request -> message;
+                $message -> sender = "老師";
+            }
         }
-
+        $message -> save();
         return back();
     }
 }

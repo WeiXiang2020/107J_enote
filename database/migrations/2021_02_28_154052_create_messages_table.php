@@ -20,7 +20,9 @@ class CreateMessagesTable extends Migration
                 $table->foreign('student_id')->references('id') -> on('students');
             $table ->unsignedInteger('teacher_id');
                 $table -> foreign('teacher_id') -> references('id') -> on('teachers');
+
             $table -> string('content');
+            $table -> string('sender');
 
             $table->timestamps();
         });
