@@ -118,11 +118,14 @@ class TaController extends Controller
         $messages = Student::find($student_id) -> messages() -> get();
 
         return view('ta.message',[
-            'messages' => $messages
+            'messages' => $messages,
+            'user' => Auth::user(),
         ]);
     }
 
     public function message_store(Request $request,$student_id){
+
+//        判斷訊息是否為空值
         if ($request -> message != null){
             $message = new message();
 
