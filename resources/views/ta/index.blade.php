@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-
+    @if(\Illuminate\Support\Facades\Auth::user() -> type == "老師")
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
@@ -82,4 +82,7 @@
             </div>
         </main>
     </div>
+    @else
+
+    @endif
 @endsection
