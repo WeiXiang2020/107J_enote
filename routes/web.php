@@ -116,13 +116,13 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
 
     //----------待研究
     //顯示學生的資料
-        Route::get('{course_id}/{student_id}/show',[
-            TaController::class,'show'
-        ]) -> name('TA.show');
+//        Route::get('{course_id}/{student_id}/show',[
+//            TaController::class,'show'
+//        ]) -> name('TA.show');
     //    -------待研究
 
     //顯示與TA對話的介面
-        Route::get('{student_id}/message',[
+        Route::get('{type_id}/message',[
             TaController::class,'message'
         ])->name('TA.message');
 

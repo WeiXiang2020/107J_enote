@@ -147,7 +147,7 @@
                 TA
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('TA.index')}}">
+                <a class="nav-link" href="{{route('TA.message')}}">
                     <i class="fas fa-fw fa-comment"></i>
                     <span>與教授聯繫</span></a>
             </li>

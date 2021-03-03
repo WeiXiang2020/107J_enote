@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\message;
 use App\Models\Student;
 use App\Models\Ta;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,9 +114,16 @@ class TaController extends Controller
 
 //    ---------own create --------------//
 
-    public function message($student_id){
+    public function message($type_id){
 
-        $messages = Student::find($student_id) -> messages() -> get();
+        //判斷使用者
+        if(Auth::user() -> type == "老師"){
+            $messages = Student::find($type_id) -> messages() -> get();
+        }else{
+            $messages = Teacher::find($type_id) -> messages() -> get();
+        }
+
+
 
         return view('ta.message',[
             'messages' => $messages,
