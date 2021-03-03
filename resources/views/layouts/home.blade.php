@@ -126,9 +126,10 @@
                 </div>
             </li>
             @yield('nav')
+
+            @if(\Illuminate\Support\Facades\Auth::user() -> type == "老師")
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Message
@@ -138,8 +139,11 @@
                     <i class="fas fa-fw fa-comment"></i>
                     <span>與Ta聯繫</span></a>
             </li>
+            @endif
 
-
+            @if(\Illuminate\Support\Facades\Auth::user()
+                   -> student() -> first() -> ta() -> first() != null )
+                {{--檢查為TA才會顯示--}}
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -147,12 +151,12 @@
                 TA
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('TA.message')}}">
+                <a class="nav-link" href="{{route('TA.index')}}">
                     <i class="fas fa-fw fa-comment"></i>
                     <span>與教授聯繫</span></a>
             </li>
-
         </ul>
+        @endif
 
     @elseif(\Illuminate\Support\Facades\Auth::user()->type=='老師')
             <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">

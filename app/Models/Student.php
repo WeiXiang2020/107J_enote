@@ -28,9 +28,9 @@ class Student extends Model
         return $this->belongsToMany(Course::class,'course_students');
     }
 
-    public function ta()
+    public function tas()
     {
-        return $this->hasOne(Ta::class);
+        return $this->belongsToMany(Course::class,'tas');
     }
 
     public function questions()

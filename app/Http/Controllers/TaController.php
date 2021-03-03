@@ -20,10 +20,22 @@ class TaController extends Controller
      */
     public function index()
     {
+
+
+        if(Auth::user() -> type == "老師"){
+            //抓取該老師所有的課程
+            $courses = User::find(Auth::id()) -> teacher()
+                -> first() -> courses() -> get();
+            }else{
+            //只抓取該學生有TA的課堂
+            $courses = User::find(Auth::id()) -> student()
+                -> first() -> tas() -> get();
+        }
+
+//        return $courses;
+
         return view('ta/index',[
-            //現在使用者的所有課堂
-            'courses' => User::find(Auth::id()) -> teacher()
-                -> first() -> courses() -> get()
+            'courses' => $courses
         ]);
     }
 

@@ -43,7 +43,7 @@ class Course extends Model
 
     public function ta()
     {
-        return $this->hasOne(Ta::class);
+        return $this->belongsToMany(Student::class,'tas');
     }
 
     public function questions()
