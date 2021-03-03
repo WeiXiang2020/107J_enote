@@ -23,6 +23,10 @@ class TeacherController extends Controller
         $courses = User::find(Auth::id())
         -> teacher() -> first() -> courses() -> get();
 
+
+//        return Auth::user();
+
+
         return view('teacher.index',
             ['courses' => $courses]
         );

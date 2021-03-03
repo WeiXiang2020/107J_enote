@@ -83,7 +83,7 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
     //首頁
         Route::get('',[
             TeacherController::class,'index'
-        ])  -> name('teacher.index');
+        ])  -> name('teacher.index') ->middleware('auth');
 
     //課程
         Route::get('{course_id}/index',[
@@ -194,7 +194,7 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
         });
 
 
-    //學生
+    //學生{---------------注意要改department_id
         Route::get('student',function()
         {
             for ($i = 0 ; $i < 10 ; $i ++){
@@ -207,7 +207,7 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
 
                 $student = new Student();
                 $student -> user_id = $user -> id;
-                $student -> department_id = 3 ;
+                $student -> department_id = 2 ;
                 $student -> classroom = '503';
                 $student -> save();
             }
@@ -228,7 +228,7 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
             //建立teacher
                 $teacher =new \App\Models\Teacher();
                 $teacher -> user_id = $user -> id ;
-                $teacher -> department_id = 3 ;
+                $teacher -> department_id = 2 ;
                 $teacher -> save();
             }
 
@@ -243,7 +243,7 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
                 $course =new \App\Models\Course();
 
                 $course -> teacher_id = 1;
-                $course -> department_id = 3;
+                $course -> department_id = 2;
                 $course -> name = 'course'. $i;
                 $course -> grade = 2 ;
                 $course -> classroom = 503;
