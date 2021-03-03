@@ -158,7 +158,7 @@ class TaController extends Controller
                 $message -> teacher_id = $type_id;
                 $message -> student_id = User::find(Auth::id()) -> student() -> first() -> id;
                 $message -> content = $request -> message;
-                $message -> sender = "老師";
+                $message -> sender = "學生";
             }
         }
         $message -> save();
