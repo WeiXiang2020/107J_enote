@@ -37,7 +37,7 @@
 
                                             <td >{{--查詢TA--}}
                                                 @if ($course -> ta() -> get() -> count() != 0 )
-                                                    {{ $course -> ta() -> first() -> student() -> first() -> user() ->first()-> name}}
+                                                    {{ $course -> ta() -> first() -> user() ->first()-> name}}
                                                 @else
                                                     null
                                                 @endif
@@ -53,7 +53,7 @@
                                                     />
                                                     <input type="button"
                                                            class="btn btn-outline-dark btn-sm"
-                                                           onclick="location.href = '{{$course -> ta() -> first() ->student_id}}/message/'"
+                                                           onclick="location.href = '{{$course -> ta() -> first() -> id}}/message/'"
                                                            value="訊息"
                                                     />
                                                 @else

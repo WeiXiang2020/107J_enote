@@ -201,6 +201,12 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
 
 #初始資料
     Route::prefix('import') -> group(function (){
+
+    //建立所有
+        Route::get('',[
+            UserController::class,'import'
+        ])->name('user.import');
+
     //系所
         Route::get('department',function(){
             $s_department[0] ="資管系";
