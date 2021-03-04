@@ -114,6 +114,11 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
             TaController::class,'store'
         ])-> name('TA.store');
 
+    //更改TA
+        Route::get('{student_id/edit',[
+            TaController::class,'edit'
+        ])->name('TA.edit');
+
     //----------待研究
     //顯示學生的資料
 //        Route::get('{course_id}/{student_id}/show',[

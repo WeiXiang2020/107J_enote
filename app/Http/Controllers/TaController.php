@@ -97,7 +97,14 @@ class TaController extends Controller
      */
     public function edit($id)
     {
+//        顯示所有的該系所的學生
+        $students = Course::find($id) -> department() -> first()-> students() -> get();
 
+//      return $students  ;
+
+        return view ('TA.edit',[
+            'students' => $students,
+        ]);
     }
 
     /**
