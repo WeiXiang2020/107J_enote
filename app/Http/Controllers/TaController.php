@@ -114,9 +114,9 @@ class TaController extends Controller
      * @param  \App\Models\Ta  $ta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ta $ta)
+    public function update($student_id,$ta_id)
     {
-        //
+
     }
 
     /**
