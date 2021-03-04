@@ -118,6 +118,11 @@ Route::post('score',[NoteScoreController::class,'store'])->name('score.store');
         Route::get('{student_id}/edit',[
             TaController::class,'edit'
         ])->name('TA.edit');
+    //更新TA
+        Route::get('{student_id}/{new_id}/update',[
+            TaController::class,'update'
+        ])->name('TA.update');
+
 
     //----------待研究
     //顯示學生的資料
